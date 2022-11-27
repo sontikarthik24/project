@@ -5,6 +5,8 @@
 package view.Login;
 
 import controller.Admin.AdminJPanel;
+import controller.Doctor.ManageDoctorJPanel;
+import controller.Hospital.ManageHospitalJPanel;
 import controller.Passport.PasportAdminJPanel;
 import controller.Person.ManagePersonJPanel;
 import controller.Police.PoliceAdminJPanel;
@@ -131,6 +133,18 @@ public class LoginJPanel extends javax.swing.JPanel {
                 else if(a.getString("role").equals("Police")){
                     PoliceJPanel pjp = new PoliceJPanel(layoutContainer, username.getText());
                     layoutContainer.add("PoliceJPanel", pjp);
+                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                    layout.next(layoutContainer);
+                }
+                else if(a.getString("role").equals("Hospitaladmin")){
+                    ManageHospitalJPanel mhjp = new ManageHospitalJPanel(layoutContainer);
+                    layoutContainer.add("ManageHospitalJPanel", mhjp);
+                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                    layout.next(layoutContainer);
+                }
+                else if(a.getString("role").equals("Doctoradmin")){
+                    ManageDoctorJPanel mdjp = new ManageDoctorJPanel(layoutContainer);
+                    layoutContainer.add("ManageDoctorJPanel", mdjp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }

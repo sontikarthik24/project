@@ -61,9 +61,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(61, 61, 61)
                 .addComponent(addEnterprise)
-                .addGap(67, 67, 67)
+                .addGap(68, 68, 68)
                 .addComponent(viewEnterprise)
                 .addContainerGap(121, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -111,8 +111,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addEnterprise;
-    private javax.swing.JButton backButton4;
-    private javax.swing.JButton backButton5;
     private javax.swing.JButton backButton6;
     private javax.swing.JButton viewEnterprise;
     // End of variables declaration//GEN-END:variables
