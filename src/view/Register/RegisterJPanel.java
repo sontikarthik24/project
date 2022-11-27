@@ -9,6 +9,7 @@ import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -60,7 +61,7 @@ public class RegisterJPanel extends javax.swing.JPanel {
         registerButton = new javax.swing.JButton();
         alertMsg = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        roleName = new javax.swing.JComboBox<>();
+        dob = new com.toedter.calendar.JDateChooser();
 
         jLabel1.setText("Name");
 
@@ -89,14 +90,7 @@ public class RegisterJPanel extends javax.swing.JPanel {
 
         alertMsg.setText("jLabel8");
 
-        jLabel8.setText("Role");
-
-        roleName.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Person", "Doctor", "Police", "Pharmacy", "Bank", "Passport" }));
-        roleName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                roleNameActionPerformed(evt);
-            }
-        });
+        jLabel8.setText("DOB");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -115,28 +109,26 @@ public class RegisterJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
+                        .addGap(58, 58, 58)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
                                 .addComponent(male)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(female))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(roleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(name)
-                                            .addComponent(username)
-                                            .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(address)
-                                            .addComponent(phone)
-                                            .addComponent(email))
-                                        .addGap(18, 18, 18)
-                                        .addComponent(alertMsg))))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(name)
+                                        .addComponent(username)
+                                        .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                        .addComponent(address)
+                                        .addComponent(phone)
+                                        .addComponent(email)))
+                                .addGap(18, 18, 18)
+                                .addComponent(alertMsg))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
+                        .addGap(193, 193, 193)
                         .addComponent(registerButton)))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
@@ -157,42 +149,41 @@ public class RegisterJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(male)
-                    .addComponent(female))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(male)
+                        .addComponent(female)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(roleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                    .addComponent(address, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(phone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(registerButton)
-                .addGap(16, 16, 16))
+                .addGap(21, 21, 21))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
         Database db = new Database();
+        DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
         
         try {
             conn = db.connect();
-            String sql = "insert into userdata (name, username, password, gender, address, role, phone, email) values(?,?,?,?,?,?,?,?)";
+            String sql = "insert into userdata (name, username, password, gender, address, role, phone, email, dob) values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, name.getText());
             statement.setString(2, username.getText());
@@ -207,9 +198,10 @@ public class RegisterJPanel extends javax.swing.JPanel {
             }
             statement.setString(4, gender);
             statement.setString(5, address.getText());
-            statement.setString(6, roleName.getSelectedItem().toString());
+            statement.setString(6, "Person");
             statement.setString(7, phone.getText());
             statement.setString(8, email.getText());
+            statement.setString(9, dateFormat.format(dob.getDate()));
             int a = statement.executeUpdate(); 
             JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
@@ -226,14 +218,11 @@ public class RegisterJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_registerButtonActionPerformed
 
-    private void roleNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roleNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_roleNameActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField address;
     private javax.swing.JLabel alertMsg;
+    private com.toedter.calendar.JDateChooser dob;
     private javax.swing.JTextField email;
     private javax.swing.JRadioButton female;
     private javax.swing.JLabel jLabel1;
@@ -249,7 +238,6 @@ public class RegisterJPanel extends javax.swing.JPanel {
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField phone;
     private javax.swing.JButton registerButton;
-    private javax.swing.JComboBox<String> roleName;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

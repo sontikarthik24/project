@@ -6,6 +6,7 @@ package controller.Person;
 
 import controller.Doctor.BookDoctorJPanel;
 import controller.Passport.ApplyPassportJPanel;
+import controller.Passport.ManagePassportApplicationsJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -36,6 +37,7 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
         viewBank = new javax.swing.JButton();
         bookDoctor = new javax.swing.JButton();
         viewPassport = new javax.swing.JButton();
+        backButton1 = new javax.swing.JButton();
 
         applyPassport.setText("Apply for Passport");
         applyPassport.addActionListener(new java.awt.event.ActionListener() {
@@ -54,6 +56,18 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
         });
 
         viewPassport.setText("View Passport Applications");
+        viewPassport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPassportActionPerformed(evt);
+            }
+        });
+
+        backButton1.setText("<<BACK");
+        backButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -71,11 +85,17 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addComponent(viewPassport)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton1)
+                .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(28, 28, 28)
+                .addComponent(backButton1)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(applyPassport)
                     .addComponent(viewBank)
@@ -102,9 +122,25 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
         layout.next(layoutContainer);
     }//GEN-LAST:event_applyPassportActionPerformed
 
+    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButton1ActionPerformed
+
+    private void viewPassportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPassportActionPerformed
+        // TODO add your handling code here:
+        ManagePassportApplicationsJPanel vpjp = new ManagePassportApplicationsJPanel(layoutContainer);
+        layoutContainer.add("ViewPassportJPanel", vpjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_viewPassportActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton applyPassport;
+    private javax.swing.JButton backButton1;
     private javax.swing.JButton bookDoctor;
     private javax.swing.JButton viewBank;
     private javax.swing.JButton viewPassport;

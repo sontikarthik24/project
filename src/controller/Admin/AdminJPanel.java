@@ -37,6 +37,7 @@ public class AdminJPanel extends javax.swing.JPanel {
         manageNetworks = new javax.swing.JButton();
         manageEnterprises = new javax.swing.JButton();
         manageOrganisations = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         manageNetworks.setText("Manage Networks");
         manageNetworks.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +60,13 @@ public class AdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        backButton.setText("<<BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -71,11 +79,17 @@ public class AdminJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(manageOrganisations)
                 .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
+                .addGap(28, 28, 28)
+                .addComponent(backButton)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(manageNetworks)
                     .addComponent(manageEnterprises)
@@ -108,8 +122,16 @@ public class AdminJPanel extends javax.swing.JPanel {
         layout.next(layoutContainer);
     }//GEN-LAST:event_manageOrganisationsActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JButton manageEnterprises;
     private javax.swing.JButton manageNetworks;
     private javax.swing.JButton manageOrganisations;

@@ -32,6 +32,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         addNetwork = new javax.swing.JButton();
         viewNetwork = new javax.swing.JButton();
+        backButton1 = new javax.swing.JButton();
 
         addNetwork.setText("Create");
         addNetwork.addActionListener(new java.awt.event.ActionListener() {
@@ -47,6 +48,13 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             }
         });
 
+        backButton1.setText("<<BACK");
+        backButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,11 +65,17 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 .addGap(101, 101, 101)
                 .addComponent(viewNetwork)
                 .addContainerGap(176, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton1)
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(30, 30, 30)
+                .addComponent(backButton1)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addNetwork)
                     .addComponent(viewNetwork))
@@ -86,9 +100,18 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         layout.next(layoutContainer);
     }//GEN-LAST:event_viewNetworkActionPerformed
 
+    private void backButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton1ActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addNetwork;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton backButton1;
     private javax.swing.JButton viewNetwork;
     // End of variables declaration//GEN-END:variables
 }
