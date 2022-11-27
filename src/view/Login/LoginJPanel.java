@@ -8,6 +8,7 @@ import controller.Admin.AdminJPanel;
 import controller.Passport.PasportAdminJPanel;
 import controller.Person.ManagePersonJPanel;
 import controller.Police.PoliceAdminJPanel;
+import controller.Police.PoliceJPanel;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -121,9 +122,15 @@ public class LoginJPanel extends javax.swing.JPanel {
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }
-                else if(a.getString("role").equals("Police")){
+                else if(a.getString("role").equals("Policeadmin")){
                     PoliceAdminJPanel pajp = new PoliceAdminJPanel(layoutContainer);
                     layoutContainer.add("PoliceAdminJPanel", pajp);
+                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                    layout.next(layoutContainer);
+                }
+                else if(a.getString("role").equals("Police")){
+                    PoliceJPanel pjp = new PoliceJPanel(layoutContainer, username.getText());
+                    layoutContainer.add("PoliceJPanel", pjp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }
