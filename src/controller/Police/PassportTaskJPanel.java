@@ -204,6 +204,7 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, passportData.getValueAt(rowIndex, 0).toString());
             statement.setString(2, policeItems.getSelectedItem().toString());
+            statement.setString(3, "Assigned");
             statement.executeUpdate();
             
             String sql1 = "update passportdata set status=? where fileno=?";
