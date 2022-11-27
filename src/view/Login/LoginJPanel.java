@@ -5,7 +5,9 @@
 package view.Login;
 
 import controller.Admin.AdminJPanel;
-import controller.Passport.ManagePassportApplicationsJPanel;
+import controller.Passport.PasportAdminJPanel;
+import controller.Person.ManagePersonJPanel;
+import controller.Police.PoliceAdminJPanel;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -107,16 +109,27 @@ public class LoginJPanel extends javax.swing.JPanel {
         
             if(a.next()) {
                 JOptionPane.showMessageDialog(this, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                System.out.print(a.getString("role"));
                 if(a.getString("role").equals("Person")){
-                    AdminJPanel ajp = new AdminJPanel(layoutContainer);
-                    layoutContainer.add("AdminJPanel", ajp);
+                    ManagePersonJPanel mpjp = new ManagePersonJPanel(layoutContainer);
+                    layoutContainer.add("ManagePersonJPanel", mpjp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }
-                if(a.getString("role").equals("Passport")){
-                    ManagePassportApplicationsJPanel mpajp = new ManagePassportApplicationsJPanel(layoutContainer);
-                    layoutContainer.add("ManagePassportApplicationsJPanel", mpajp);
+                else if(a.getString("role").equals("Passport")){
+                    PasportAdminJPanel pajp = new PasportAdminJPanel(layoutContainer);
+                    layoutContainer.add("PassportAdminJPanel", pajp);
+                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                    layout.next(layoutContainer);
+                }
+                else if(a.getString("role").equals("Police")){
+                    PoliceAdminJPanel pajp = new PoliceAdminJPanel(layoutContainer);
+                    layoutContainer.add("PoliceAdminJPanel", pajp);
+                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                    layout.next(layoutContainer);
+                }
+                else {
+                    AdminJPanel ajp = new AdminJPanel(layoutContainer);
+                    layoutContainer.add("AdminJPanel", ajp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }

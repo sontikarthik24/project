@@ -44,6 +44,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         networkName = new javax.swing.JTextField();
         addNetwork = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         jLabel1.setText("Network Name");
 
@@ -51,6 +52,13 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         addNetwork.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNetworkActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("<<BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -69,11 +77,17 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
                         .addGap(187, 187, 187)
                         .addComponent(addNetwork)))
                 .addContainerGap(153, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
+                .addGap(38, 38, 38)
+                .addComponent(backButton)
+                .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(networkName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -101,9 +115,17 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_addNetworkActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addNetwork;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField networkName;
     // End of variables declaration//GEN-END:variables

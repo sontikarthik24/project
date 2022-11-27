@@ -5,6 +5,7 @@
 package controller.Enterprise;
 
 import controller.Network.ViewNetworkJPanel;
+import java.awt.CardLayout;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
@@ -79,6 +80,7 @@ public class ViewEnterpriseJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         enterpriseData = new javax.swing.JTable();
+        backButton7 = new javax.swing.JButton();
 
         enterpriseData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -93,6 +95,13 @@ public class ViewEnterpriseJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(enterpriseData);
 
+        backButton7.setText("<<BACK");
+        backButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -101,18 +110,33 @@ public class ViewEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(104, 104, 104)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(140, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton7)
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(18, 18, 18)
+                .addComponent(backButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(135, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton7ActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButton7ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton6;
+    private javax.swing.JButton backButton7;
     private javax.swing.JTable enterpriseData;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

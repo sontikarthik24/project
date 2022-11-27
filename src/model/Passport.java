@@ -14,10 +14,26 @@ public class Passport {
     private String dob;
     private String gender;
     private String address;
-    private String phone;
+    private int phone;
     private String email;
-    private String photo;
     private String applicationId;
+    private String status;
+
+    public String getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(String applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    public String getStaus() {
+        return status;
+    }
+
+    public void setStaus(String staus) {
+        this.status = staus;
+    }
 
     public String getPassportApplication() {
         return applicationId;
@@ -59,11 +75,11 @@ public class Passport {
         this.address = address;
     }
 
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 
@@ -74,24 +90,21 @@ public class Passport {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    
+    @Override
+    public String toString(){
+        return name;
     }
     
-    public Passport(String name, String dob, String gender, String address, String phone, String email, String photo, String applicationId){
+    public Passport(String name, String dob, String gender, String address, int phone, String email, String applicationId, String status){
         this.name = name;
         this.dob = dob;
         this.gender = gender;
         this.address = address;
         this.phone = phone;
         this.email = email;
-        this.photo = photo;
         this.applicationId = applicationId;
+        this.status = status;
     }
     
 }

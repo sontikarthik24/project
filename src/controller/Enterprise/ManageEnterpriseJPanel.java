@@ -33,6 +33,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         addEnterprise = new javax.swing.JButton();
         viewEnterprise = new javax.swing.JButton();
+        backButton6 = new javax.swing.JButton();
 
         addEnterprise.setText("add");
         addEnterprise.addActionListener(new java.awt.event.ActionListener() {
@@ -48,6 +49,13 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             }
         });
 
+        backButton6.setText("<<BACK");
+        backButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,11 +66,17 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 .addGap(67, 67, 67)
                 .addComponent(viewEnterprise)
                 .addContainerGap(121, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton6)
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
+                .addGap(22, 22, 22)
+                .addComponent(backButton6)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addEnterprise)
                     .addComponent(viewEnterprise))
@@ -87,9 +101,19 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         layout.next(layoutContainer);
     }//GEN-LAST:event_viewEnterpriseActionPerformed
 
+    private void backButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton6ActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addEnterprise;
+    private javax.swing.JButton backButton4;
+    private javax.swing.JButton backButton5;
+    private javax.swing.JButton backButton6;
     private javax.swing.JButton viewEnterprise;
     // End of variables declaration//GEN-END:variables
 }

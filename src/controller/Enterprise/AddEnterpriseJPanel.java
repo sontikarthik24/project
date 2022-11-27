@@ -4,6 +4,7 @@
  */
 package controller.Enterprise;
 
+import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,6 @@ import javax.swing.JOptionPane;
  */
 public class AddEnterpriseJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
-    Connection conn;
     public static int count = 0;
     /**
      * Creates new form AddEnterpriseJPanel
@@ -39,7 +39,7 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         ArrayList<String> networkList = new ArrayList();
         Database db = new Database();
         try {
-            conn = db.connect();
+            Connection conn = db.connect();
             String sql = "select network from networks";
             PreparedStatement statement = conn.prepareStatement(sql);
             ResultSet a = statement.executeQuery();
@@ -67,6 +67,7 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         addEnterprise = new javax.swing.JButton();
         networkName = new javax.swing.JLabel();
         networkChoice = new javax.swing.JComboBox<>();
+        backButton4 = new javax.swing.JButton();
 
         jLabel1.setText("Enterprise Name");
 
@@ -78,6 +79,13 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         });
 
         networkName.setText("Network Name");
+
+        backButton4.setText("<<BACK");
+        backButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -98,11 +106,17 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
                             .addComponent(enterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(networkChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(112, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backButton4)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addGap(38, 38, 38)
+                .addComponent(backButton4)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(enterpriseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -121,7 +135,7 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         Database db = new Database();
         count++;
         try {
-            conn = db.connect();
+            Connection conn = db.connect();
             String sql = "insert into enterprises (id, enterprise, network) values(?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, count);
@@ -135,9 +149,21 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_addEnterpriseActionPerformed
 
+    private void backButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButton4ActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addEnterprise;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton backButton1;
+    private javax.swing.JButton backButton2;
+    private javax.swing.JButton backButton3;
+    private javax.swing.JButton backButton4;
     private javax.swing.JTextField enterpriseName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JComboBox<String> networkChoice;

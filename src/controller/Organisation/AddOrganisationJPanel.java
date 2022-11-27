@@ -5,6 +5,7 @@
 package controller.Organisation;
 
 import controller.Enterprise.AddEnterpriseJPanel;
+import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -94,6 +95,7 @@ public class AddOrganisationJPanel extends javax.swing.JPanel {
         networkName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         enterpriseChoice = new javax.swing.JComboBox<>();
+        backButton = new javax.swing.JButton();
 
         jLabel1.setText("Organisation Name");
 
@@ -107,6 +109,13 @@ public class AddOrganisationJPanel extends javax.swing.JPanel {
         networkName.setText("Network Name");
 
         jLabel2.setText("Enterprise Name");
+
+        backButton.setText("<<BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,11 +138,17 @@ public class AddOrganisationJPanel extends javax.swing.JPanel {
                             .addComponent(networkChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(enterpriseChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(140, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(101, 101, 101)
+                .addGap(35, 35, 35)
+                .addComponent(backButton)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(orgnaisationName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,9 +186,17 @@ public class AddOrganisationJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_addOrgnaisationActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addOrgnaisation;
+    private javax.swing.JButton backButton;
     private javax.swing.JComboBox<String> enterpriseChoice;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
