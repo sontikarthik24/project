@@ -4,7 +4,7 @@
  */
 package controller.Police;
 
-import controller.Network.ViewNetworkJPanel;
+
 import controller.Passport.PasportAdminJPanel;
 import java.awt.CardLayout;
 import java.sql.Connection;
@@ -200,7 +200,7 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
         
         try {
             Connection conn = db.connect();
-            String sql = "insert into passporttask (fileno, police) values(?,?)";
+            String sql = "insert into passporttask (fileno, police, status) values(?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, passportData.getValueAt(rowIndex, 0).toString());
             statement.setString(2, policeItems.getSelectedItem().toString());
