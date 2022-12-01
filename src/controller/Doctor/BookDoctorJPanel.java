@@ -4,8 +4,20 @@
  */
 package controller.Doctor;
 
+import controller.Network.ViewNetworkJPanel;
 import java.awt.CardLayout;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import model.Database;
+import model.Doctor;
 
 /**
  *
@@ -13,14 +25,56 @@ import javax.swing.JPanel;
  */
 public class BookDoctorJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
+    String username;
     /**
      * Creates new form BookDoctorJPanel
      */
-    public BookDoctorJPanel(JPanel layoutContainer) {
+    public BookDoctorJPanel(JPanel layoutContainer, String username) {
         initComponents();
         this.layoutContainer = layoutContainer;
+        this.username = username;
+        
+        addDoctorData();
     }
+    
+    private ArrayList<Doctor> doctorList() {
+        ArrayList<Doctor> doctorList = new ArrayList<>();
+        
+        Database db = new Database();
+        
+        try {
+            Connection conn = db.connect();
+            String sql = "select * from doctordata";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            ResultSet a = statement.executeQuery();
+            Doctor d;
+            while(a.next()) {
+                doctorList.add(new Doctor(a.getInt("id"), a.getString("doctor"), a.getString("hospitalname")));
+            }
+            
+            db.disconnect();
+        } catch (Exception ex) {
+            Logger.getLogger(ViewNetworkJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return doctorList;
+    }
+    private void addDoctorData(){
+        ArrayList<Doctor> hospitalList = doctorList();
+        DefaultTableModel model = (DefaultTableModel) doctorData.getModel();
+        model.setRowCount(0);
+        for(Doctor d: doctorList()){
+            Object[] row = new Object[3];
+            
+            row[0] = d.getDoctorId();
+            row[1] = d.getDoctorName();
+            row[2] = d.getHospitalName();
 
+            
+            model.addRow(row);
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,11 +85,38 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         backButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        doctorData = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        reason = new javax.swing.JTextField();
+        appointmentButton = new javax.swing.JButton();
 
         backButton.setText("<<BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
+            }
+        });
+
+        doctorData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID", "Doctor ", "Hospital"
+            }
+        ));
+        jScrollPane1.setViewportView(doctorData);
+
+        jLabel1.setText("Reason for visit");
+
+        appointmentButton.setText("Book Appointment");
+        appointmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointmentButtonActionPerformed(evt);
             }
         });
 
@@ -47,13 +128,35 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
                 .addContainerGap(355, Short.MAX_VALUE)
                 .addComponent(backButton)
                 .addGap(35, 35, 35))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel1)
+                        .addGap(30, 30, 30)
+                        .addComponent(reason, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(appointmentButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(backButton)
-                .addContainerGap(335, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(reason, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
+                .addComponent(appointmentButton)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -64,8 +167,55 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
         layout.previous(layoutContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void appointmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_appointmentButtonActionPerformed
+        // TODO add your handling code here:
+        int rowIndex = doctorData.getSelectedRow();
+        if (rowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row for selecting a doctor", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Database db = new Database();
+        try {
+            Connection conn = db.connect();
+            String sql = "insert into doctortask (bookingid, patient, doctor, hospital, reason, status) values(?,?,?,?,?,?)";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, getFileNo());
+            statement.setString(2, username);
+            statement.setString(3, doctorData.getValueAt(rowIndex, 1).toString());
+            statement.setString(4, doctorData.getValueAt(rowIndex, 2).toString());
+            statement.setString(5, reason.getText());
+            statement.setString(6, "Booked");
+            statement.executeUpdate();
+            
+            JOptionPane.showMessageDialog(this, "Successfully booked", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            Logger.getLogger(BookDoctorJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        db.disconnect();
+        
+        reason.setText("");
+    }//GEN-LAST:event_appointmentButtonActionPerformed
+
+    public String getFileNo() {
+        String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        int length = 8;
+        for(int i = 0; i < length; i++) {
+          int index = random.nextInt(alphabet.length());
+          char randomChar = alphabet.charAt(index);
+          sb.append(randomChar);
+        }
+        return sb.toString();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton appointmentButton;
     private javax.swing.JButton backButton;
+    private javax.swing.JTable doctorData;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField reason;
     // End of variables declaration//GEN-END:variables
 }

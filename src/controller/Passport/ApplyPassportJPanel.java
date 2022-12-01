@@ -5,22 +5,23 @@
 package controller.Passport;
 
 import java.awt.CardLayout;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
 import view.Register.RegisterJPanel;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -28,16 +29,13 @@ import view.Register.RegisterJPanel;
  */
 public class ApplyPassportJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
-    Connection conn;
-    String gender;
+    
     /**
      * Creates new form ApplyPassportJPanel
      */
     public ApplyPassportJPanel(JPanel layoutContainer) {
         initComponents();
         this.layoutContainer = layoutContainer;
-        this.conn = conn;
-        this.gender = gender;
     }
 
     /**
@@ -179,9 +177,9 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Database db = new Database();
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
-       
+        String gender = null;
         try {
-            conn = db.connect();
+            Connection conn = db.connect();
             String sql = "insert into passportdata (name, dob, gender, address, phone, email, fileno, status) values(?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, name.getText());
@@ -207,6 +205,35 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         }
         
         db.disconnect();
+        
+        String ToEmail = email.getText();
+        String FromEmail = "karthiksonti@gmail.com";//studyviral2@gmail.com
+        String FromEmailPassword = "Karthik@24";//You email Password from you want to send email
+        String Subjects = "Passport";
+        
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth","true");
+        properties.put("mail.smtp.starttls.enable","true");
+        properties.put("mail.smtp.host","smtp.gmail.com");
+        properties.put("mail.smtp.EnableSSL.enable","true");
+        properties.put("mail.smtp.port","587");
+        
+        Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication(){
+                return new PasswordAuthentication(FromEmail, FromEmailPassword);
+            }
+        });
+        
+        try{
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(FromEmail));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(ToEmail));
+            message.setSubject(Subjects);
+            message.setText("Application Submitted");
+            Transport.send(message);
+        }catch(Exception ex){
+            System.out.println(""+ex);
+        }
         name.setText("");
         address.setText("");
         phone.setText("");

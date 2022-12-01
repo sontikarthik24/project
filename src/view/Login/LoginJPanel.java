@@ -5,8 +5,10 @@
 package view.Login;
 
 import controller.Admin.AdminJPanel;
+import controller.Doctor.DoctorTaskJPanel;
 import controller.Doctor.ManageDoctorJPanel;
 import controller.Hospital.ManageHospitalJPanel;
+import controller.Identity.ManageIdentityJPanel;
 import controller.Passport.PasportAdminJPanel;
 import controller.Person.ManagePersonJPanel;
 import controller.Police.PoliceAdminJPanel;
@@ -113,7 +115,7 @@ public class LoginJPanel extends javax.swing.JPanel {
             if(a.next()) {
                 JOptionPane.showMessageDialog(this, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
                 if(a.getString("role").equals("Person")){
-                    ManagePersonJPanel mpjp = new ManagePersonJPanel(layoutContainer);
+                    ManagePersonJPanel mpjp = new ManagePersonJPanel(layoutContainer, a.getString("username"));
                     layoutContainer.add("ManagePersonJPanel", mpjp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
@@ -136,15 +138,15 @@ public class LoginJPanel extends javax.swing.JPanel {
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }
-                else if(a.getString("role").equals("Hospitaladmin")){
-                    ManageHospitalJPanel mhjp = new ManageHospitalJPanel(layoutContainer);
-                    layoutContainer.add("ManageHospitalJPanel", mhjp);
+                else if(a.getString("role").equals("Medicaladmin")){
+                    ManageIdentityJPanel mijp = new ManageIdentityJPanel(layoutContainer);
+                    layoutContainer.add("ManageIdentityJPanel", mijp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }
-                else if(a.getString("role").equals("Doctoradmin")){
-                    ManageDoctorJPanel mdjp = new ManageDoctorJPanel(layoutContainer);
-                    layoutContainer.add("ManageDoctorJPanel", mdjp);
+                else if(a.getString("role").equals("Doctor")){
+                    DoctorTaskJPanel dtjp = new DoctorTaskJPanel(layoutContainer, a.getString("username"));
+                    layoutContainer.add("DoctorTaskJPanel", dtjp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }

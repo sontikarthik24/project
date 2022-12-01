@@ -16,12 +16,14 @@ import javax.swing.JPanel;
  */
 public class ManagePersonJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
+    String username;
     /**
      * Creates new form ManagePersonJPanel
      */
-    public ManagePersonJPanel(JPanel layoutContainer) {
+    public ManagePersonJPanel(JPanel layoutContainer, String username) {
         initComponents();
         this.layoutContainer = layoutContainer;
+        this.username = username;
     }
 
     /**
@@ -47,6 +49,11 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
         });
 
         viewBank.setText("Apply for Bank Account");
+        viewBank.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBankActionPerformed(evt);
+            }
+        });
 
         bookDoctor.setText("Book Doctor Appointment");
         bookDoctor.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +115,7 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
 
     private void bookDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookDoctorActionPerformed
         // TODO add your handling code here:
-        BookDoctorJPanel bdjp = new BookDoctorJPanel(layoutContainer);
+        BookDoctorJPanel bdjp = new BookDoctorJPanel(layoutContainer, username);
         layoutContainer.add("ApplyPassportJPanel", bdjp);
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
@@ -136,6 +143,10 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
     }//GEN-LAST:event_viewPassportActionPerformed
+
+    private void viewBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBankActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewBankActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

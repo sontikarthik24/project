@@ -31,7 +31,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         initComponents();
         this.layoutContainer = layoutContainer;
         
-        addHospitalData();
+        addDoctorData();
     }
     
     private ArrayList<Doctor> doctorList() {
@@ -56,7 +56,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         
         return doctorList;
     }
-    private void addHospitalData(){
+    private void addDoctorData(){
         ArrayList<Doctor> hospitalList = doctorList();
         DefaultTableModel model = (DefaultTableModel) doctorData.getModel();
         model.setRowCount(0);
