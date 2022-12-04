@@ -49,7 +49,7 @@ public class ViewOrganisationJPanel extends javax.swing.JPanel {
                 organisationList.add(new Organisation(a.getInt("id"),a.getString("organisation"),a.getString("enterprise"),a.getString("network")));
             }
         } catch (Exception ex) {
-            Logger.getLogger(ViewNetworkJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewOrganisationJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return organisationList;

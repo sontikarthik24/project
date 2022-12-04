@@ -52,7 +52,7 @@ public class ViewHospitalJPanel extends javax.swing.JPanel {
             
             db.disconnect();
         } catch (Exception ex) {
-            Logger.getLogger(ViewNetworkJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewHospitalJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return hospitalList;

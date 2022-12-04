@@ -22,8 +22,9 @@ import model.DoctorTask;
  *
  * @author karthiksonti
  */
-public class DoctorTaskJPanel extends javax.swing.JPanel { 
+public class DoctorTaskJPanel extends javax.swing.JPanel {
     String doctor;
+    String hospital;
     JPanel layoutContainer;
     /**
      * Creates new form DoctorTaskJPanel
@@ -34,6 +35,7 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
         this.doctor = doctor;
         
         addDoctorTasks();
+        
     }
     
     private ArrayList<DoctorTask> doctorTaskList() {
@@ -43,9 +45,19 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
         
         try {
             Connection conn = db.connect();
-            String sql = "select * from doctortask where doctor=?";
+            
+            String hospitalName = "select hospitalname from doctordata where doctor=?";
+            PreparedStatement hstatement = conn.prepareStatement(hospitalName);
+            hstatement.setString(1, doctor);
+            ResultSet h = hstatement.executeQuery();
+            while(h.next()) {
+                hospital = h.getString("hospitalname");
+            }
+            
+            String sql = "select * from doctortask where doctor=? and status=?";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, doctor);
+            statement.setString(2, "booked");
             ResultSet a = statement.executeQuery();
             DoctorTask d;
             while(a.next()) {
@@ -60,7 +72,7 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
         return doctorTaskList;
     }
     
-    private void addDoctorTasks(){
+    public void addDoctorTasks(){
         ArrayList<DoctorTask> hospitalList = doctorTaskList();
         DefaultTableModel model = (DefaultTableModel) doctorTask.getModel();
         model.setRowCount(0);
@@ -168,18 +180,45 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int rowIndex = doctorTask.getSelectedRow();
         if (rowIndex<0){
-            JOptionPane.showMessageDialog(this, "Please select a row for selecting a doctor", "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select a row for adding data to patient", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        DoctorAddNotesJPanel danjp = new DoctorAddNotesJPanel(layoutContainer, doctorTask.getValueAt(rowIndex,0).toString(), doctorTask.getValueAt(rowIndex,1).toString(), doctorTask.getValueAt(rowIndex,2).toString());
+        DoctorAddNotesJPanel danjp = new DoctorAddNotesJPanel(layoutContainer, doctorTask.getValueAt(rowIndex,0).toString(), doctorTask.getValueAt(rowIndex,1).toString(), doctor, hospital);
         layoutContainer.add("DoctorAddNotesJPanel", danjp);
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
+        addDoctorTasks();
     }//GEN-LAST:event_addNotesActionPerformed
 
     private void viewPatientHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientHistoryActionPerformed
         // TODO add your handling code here:
+        int rowIndex = doctorTask.getSelectedRow();
+        if (rowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row for view patient history", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Database db = new Database();
+        
+        try {
+            Connection conn = db.connect();
+            String sql = "select * from patienthistory where patient=?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, doctorTask.getValueAt(rowIndex,1).toString());
+            ResultSet a = statement.executeQuery();
+            if(a.next()) {
+                DoctorViewHistoryJPanel dvhjp = new DoctorViewHistoryJPanel(layoutContainer, doctorTask.getValueAt(rowIndex,1).toString());
+                layoutContainer.add("DoctorViewHistoryJPanel", dvhjp);
+                CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                layout.next(layoutContainer);
+            }
+            else {
+                JOptionPane.showMessageDialog(this, "No history", "Info", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(DoctorTaskJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_viewPatientHistoryActionPerformed
 
 

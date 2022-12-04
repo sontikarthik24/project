@@ -49,7 +49,7 @@ public class ViewEnterpriseJPanel extends javax.swing.JPanel {
                 enterpriseList.add(new Enterprise(a.getInt("id"),a.getString("enterprise"),a.getString("network")));
             }
         } catch (Exception ex) {
-            Logger.getLogger(ViewNetworkJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewEnterpriseJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return enterpriseList;

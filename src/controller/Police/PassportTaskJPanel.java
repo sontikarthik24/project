@@ -53,7 +53,7 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
                 policeList.add(a.getString("name"));
             }
         } catch (Exception ex) {
-            Logger.getLogger(PasportAdminJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PassportTaskJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return policeList;
     }

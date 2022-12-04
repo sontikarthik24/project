@@ -4,6 +4,7 @@
  */
 package controller.Pharma;
 
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
@@ -30,19 +31,86 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addPharma = new javax.swing.JButton();
+        viewPharma = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+
+        addPharma.setText("Add");
+        addPharma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addPharmaActionPerformed(evt);
+            }
+        });
+
+        viewPharma.setText("View");
+        viewPharma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPharmaActionPerformed(evt);
+            }
+        });
+
+        backButton.setText("<<BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(addPharma)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(viewPharma)
+                .addGap(84, 84, 84))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(backButton)
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewPharma)
+                    .addComponent(addPharma))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void addPharmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPharmaActionPerformed
+        // TODO add your handling code here:
+        AddPharmaJPanel apjp = new AddPharmaJPanel(layoutContainer);
+        layoutContainer.add("AddPharmaJPanel", apjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_addPharmaActionPerformed
+
+    private void viewPharmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPharmaActionPerformed
+        // TODO add your handling code here:
+        ViewPharmaJPanel vpjp = new ViewPharmaJPanel(layoutContainer);
+        layoutContainer.add("ViewPharmaJPanel", vpjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_viewPharmaActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addPharma;
+    private javax.swing.JButton backButton;
+    private javax.swing.JButton viewPharma;
     // End of variables declaration//GEN-END:variables
 }

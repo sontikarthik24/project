@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package controller.Identity;
+package controller.Medical;
 
 import controller.Doctor.ManageDoctorJPanel;
 import controller.Hospital.ManageHospitalJPanel;
@@ -14,13 +14,13 @@ import javax.swing.JPanel;
  *
  * @author karthiksonti
  */
-public class ManageIdentityJPanel extends javax.swing.JPanel {
+public class ManageMedicalJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
     
     /**
      * Creates new form ManageIdentityJPanel
      */
-    public ManageIdentityJPanel(JPanel layoutContainer) {
+    public ManageMedicalJPanel(JPanel layoutContainer) {
         initComponents();
         this.layoutContainer = layoutContainer;
     }

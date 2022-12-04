@@ -4,6 +4,7 @@
  */
 package controller.Doctor;
 
+import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.HashMap;
@@ -23,16 +24,18 @@ public class DoctorAddNotesJPanel extends javax.swing.JPanel {
     String id;
     String patient;
     String doctor;
+    String hospital;
     
     /**
      * Creates new form DoctorAddNotesJPanel
      */
-    public DoctorAddNotesJPanel(JPanel layoutContainer, String id, String patient, String doctor) {
+    public DoctorAddNotesJPanel(JPanel layoutContainer, String id, String patient, String doctor, String hospital) {
         initComponents();
         this.layoutContainer = layoutContainer;
         this.id = id;
         this.patient = patient;
         this.doctor = doctor;
+        this.hospital = hospital;
         
         ((DefaultTableModel)drugsData.getModel()).setRowCount(0);
         
@@ -64,6 +67,7 @@ public class DoctorAddNotesJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         quantity = new javax.swing.JTextField();
         submitButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         jLabel1.setText("BP");
 
@@ -116,6 +120,13 @@ public class DoctorAddNotesJPanel extends javax.swing.JPanel {
             }
         });
 
+        backButton.setText("<<BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,11 +172,17 @@ public class DoctorAddNotesJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(addDrugsButton)))))
                 .addGap(0, 14, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(24, 24, 24)
+                .addComponent(backButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -233,7 +250,18 @@ public class DoctorAddNotesJPanel extends javax.swing.JPanel {
             statement1.setString(2, id);
             statement1.executeUpdate();
             
+            String sql2 = "insert into pharmaorders (bookingid, patient, doctor, hospital, drugs, status) values(?,?,?,?,?,?)";
+            PreparedStatement statement2 = conn.prepareStatement(sql2);
+            statement2.setString(1, id);
+            statement2.setString(2, patient);
+            statement2.setString(3, doctor);
+            statement2.setString(4, hospital);
+            statement2.setString(5, drugMap.toString());
+            statement2.setString(6, "Not Delivered");
+            statement2.executeUpdate();
+            
             JOptionPane.showMessageDialog(this, "Notes Saved", "Success", JOptionPane.INFORMATION_MESSAGE);
+            
             
         } catch (Exception ex) {
             Logger.getLogger(DoctorAddNotesJPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -249,9 +277,17 @@ public class DoctorAddNotesJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
     }//GEN-LAST:event_submitButtonActionPerformed
 
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDrugsButton;
+    private javax.swing.JButton backButton;
     private javax.swing.JTextField bp;
     private javax.swing.JTextField drugName;
     private javax.swing.JTable drugsData;
