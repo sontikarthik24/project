@@ -206,34 +206,6 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         
         db.disconnect();
         
-        String ToEmail = email.getText();
-        String FromEmail = "karthiksonti@gmail.com";//studyviral2@gmail.com
-        String FromEmailPassword = "Karthik@24";//You email Password from you want to send email
-        String Subjects = "Passport";
-        
-        Properties properties = new Properties();
-        properties.put("mail.smtp.auth","true");
-        properties.put("mail.smtp.starttls.enable","true");
-        properties.put("mail.smtp.host","smtp.gmail.com");
-        properties.put("mail.smtp.EnableSSL.enable","true");
-        properties.put("mail.smtp.port","587");
-        
-        Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication(){
-                return new PasswordAuthentication(FromEmail, FromEmailPassword);
-            }
-        });
-        
-        try{
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(FromEmail));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(ToEmail));
-            message.setSubject(Subjects);
-            message.setText("Application Submitted");
-            Transport.send(message);
-        }catch(Exception ex){
-            System.out.println(""+ex);
-        }
         name.setText("");
         address.setText("");
         phone.setText("");

@@ -6,11 +6,10 @@ package view.Login;
 
 import controller.Admin.AdminJPanel;
 import controller.Doctor.DoctorTaskJPanel;
-import controller.Doctor.ManageDoctorJPanel;
-import controller.Hospital.ManageHospitalJPanel;
-import controller.Identity.ManageIdentityJPanel;
+import controller.Medical.ManageMedicalJPanel;
 import controller.Passport.PasportAdminJPanel;
 import controller.Person.ManagePersonJPanel;
+import controller.Pharma.ViewPharmaOrdersJPanel;
 import controller.Police.PoliceAdminJPanel;
 import controller.Police.PoliceJPanel;
 import java.awt.CardLayout;
@@ -139,7 +138,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                     layout.next(layoutContainer);
                 }
                 else if(a.getString("role").equals("Medicaladmin")){
-                    ManageIdentityJPanel mijp = new ManageIdentityJPanel(layoutContainer);
+                    ManageMedicalJPanel mijp = new ManageMedicalJPanel(layoutContainer);
                     layoutContainer.add("ManageIdentityJPanel", mijp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
@@ -147,6 +146,12 @@ public class LoginJPanel extends javax.swing.JPanel {
                 else if(a.getString("role").equals("Doctor")){
                     DoctorTaskJPanel dtjp = new DoctorTaskJPanel(layoutContainer, a.getString("username"));
                     layoutContainer.add("DoctorTaskJPanel", dtjp);
+                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                    layout.next(layoutContainer);
+                }
+                else if(a.getString("role").equals("Pharmaadmin")){
+                    ViewPharmaOrdersJPanel vpojp = new ViewPharmaOrdersJPanel(layoutContainer);
+                    layoutContainer.add("ViewPharmaOrdersJPanel", vpojp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }

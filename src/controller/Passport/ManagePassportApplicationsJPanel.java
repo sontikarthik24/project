@@ -49,7 +49,7 @@ public class ManagePassportApplicationsJPanel extends javax.swing.JPanel {
                 PassportList.add(new Passport(a.getString("name"),a.getString("dob"), a.getString("gender"), a.getString("address"), a.getInt("phone"), a.getString("email"), a.getString("fileno"), a.getString("status")));
             }
         } catch (Exception ex) {
-            Logger.getLogger(ViewNetworkJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagePassportApplicationsJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return PassportList;

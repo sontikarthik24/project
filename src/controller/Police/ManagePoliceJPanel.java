@@ -49,7 +49,7 @@ public class ManagePoliceJPanel extends javax.swing.JPanel {
                 policeList.add(new Person(a.getString("name"), a.getString("username"), a.getString("dob"), a.getString("gender"), a.getString("address"), a.getInt("phone"), a.getString("email")));
             }
         } catch (Exception ex) {
-            Logger.getLogger(ViewNetworkJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ManagePoliceJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return policeList;
