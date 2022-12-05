@@ -167,7 +167,7 @@ public class PharmaOrdersJPanel extends javax.swing.JPanel {
             Connection conn = db.connect();
             String sql = "update pharmaorders set status=? where bookingid=?";
             PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, "Delivered");
+            statement.setString(1, "Pending");
             statement.setString(2, orderData.getValueAt(rowIndex, 0).toString());
             statement.executeUpdate();
             
