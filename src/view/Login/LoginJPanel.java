@@ -4,7 +4,9 @@
  */
 package view.Login;
 
+import controller.Adhar.AAdminNewJPanel;
 import controller.Admin.AdminJPanel;
+import controller.Bank.BankAdminJPanel;
 import controller.Doctor.DoctorTaskJPanel;
 import controller.Medical.ManageMedicalJPanel;
 import controller.Passport.PasportAdminJPanel;
@@ -152,6 +154,18 @@ public class LoginJPanel extends javax.swing.JPanel {
                 else if(a.getString("role").equals("Pharmaadmin")){
                     ViewPharmaOrdersJPanel vpojp = new ViewPharmaOrdersJPanel(layoutContainer);
                     layoutContainer.add("ViewPharmaOrdersJPanel", vpojp);
+                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                    layout.next(layoutContainer);
+                }
+                else if(a.getString("role").equals("Bankadmin")){
+                    BankAdminJPanel bajp = new BankAdminJPanel(layoutContainer);
+                    layoutContainer.add("ViewPharmaOrdersJPanel", bajp);
+                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                    layout.next(layoutContainer);
+                }
+                else if(a.getString("role").equals("Adharadmin")){
+                    AAdminNewJPanel aawjp = new AAdminNewJPanel(layoutContainer);
+                    layoutContainer.add("AAdminNewJPanel", aawjp);
                     CardLayout layout = (CardLayout) layoutContainer.getLayout();
                     layout.next(layoutContainer);
                 }

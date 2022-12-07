@@ -82,7 +82,7 @@ public class ManageMedicalJPanel extends javax.swing.JPanel {
                 .addComponent(doctorButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pharmaButton)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +94,7 @@ public class ManageMedicalJPanel extends javax.swing.JPanel {
                     .addComponent(hospitalButton)
                     .addComponent(doctorButton)
                     .addComponent(pharmaButton))
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

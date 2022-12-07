@@ -8,7 +8,6 @@ import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.DateFormat;
-import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,12 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
 import view.Register.RegisterJPanel;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -29,13 +22,15 @@ import javax.mail.internet.MimeMessage;
  */
 public class ApplyPassportJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
+    String username;
     
     /**
      * Creates new form ApplyPassportJPanel
      */
-    public ApplyPassportJPanel(JPanel layoutContainer) {
+    public ApplyPassportJPanel(JPanel layoutContainer, String username) {
         initComponents();
         this.layoutContainer = layoutContainer;
+        this.username = username; 
     }
 
     /**
@@ -180,7 +175,7 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         String gender = null;
         try {
             Connection conn = db.connect();
-            String sql = "insert into passportdata (name, dob, gender, address, phone, email, fileno, status) values(?,?,?,?,?,?,?,?)";
+            String sql = "insert into passportdata (name, dob, gender, address, phone, email, fileno, status, username) values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, name.getText());
             statement.setString(2, dateFormat.format(dob.getDate()));
@@ -198,6 +193,7 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
             statement.setString(6, email.getText());
             statement.setString(7, getFileNo());
             statement.setString(8, "Submitted");
+            statement.setString(9, username);
             int a = statement.executeUpdate(); 
             JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
