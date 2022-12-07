@@ -25,11 +25,13 @@ import model.Passport;
  */
 public class ManagePassportApplicationsJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
+    String username;
     
     /** Creates new form ViewPassportJPanel */
-    public ManagePassportApplicationsJPanel(JPanel layoutContainer) {
+    public ManagePassportApplicationsJPanel(JPanel layoutContainer, String username) {
         initComponents();
         this.layoutContainer = layoutContainer;
+        this.username = username;
         
         addPassportData();
     }
@@ -41,8 +43,9 @@ public class ManagePassportApplicationsJPanel extends javax.swing.JPanel {
         
         try {
             Connection conn = db.connect();
-            String sql = "select * from passportdata";
+            String sql = "select * from passportdata where username=?";
             PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, username);
             ResultSet a = statement.executeQuery();
             Passport p;
             while(a.next()) {

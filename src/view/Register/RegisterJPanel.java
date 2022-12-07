@@ -4,18 +4,14 @@
  */
 package view.Register;
 
-import controller.Admin.AdminJPanel;
-import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
-import view.Login.LoginJPanel;
 
 /**
  *

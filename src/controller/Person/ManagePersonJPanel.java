@@ -4,6 +4,10 @@
  */
 package controller.Person;
 
+import controller.Adhar.AddAdharJPanel;
+import controller.Adhar.ViewAdharJPanel;
+import controller.Bank.AddBankJPanel;
+import controller.Bank.ViewBankJPanel;
 import controller.Doctor.BookDoctorJPanel;
 import controller.Passport.ApplyPassportJPanel;
 import controller.Passport.ManagePassportApplicationsJPanel;
@@ -36,10 +40,14 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         applyPassport = new javax.swing.JButton();
-        viewBank = new javax.swing.JButton();
+        addBank = new javax.swing.JButton();
         bookDoctor = new javax.swing.JButton();
         viewPassport = new javax.swing.JButton();
         backButton1 = new javax.swing.JButton();
+        viewBankApplications = new javax.swing.JButton();
+        manageUser = new javax.swing.JButton();
+        addAdhar = new javax.swing.JButton();
+        viewAdhar = new javax.swing.JButton();
 
         applyPassport.setText("Apply for Passport");
         applyPassport.addActionListener(new java.awt.event.ActionListener() {
@@ -48,10 +56,10 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
             }
         });
 
-        viewBank.setText("Apply for Bank Account");
-        viewBank.addActionListener(new java.awt.event.ActionListener() {
+        addBank.setText("Apply for Bank Account");
+        addBank.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewBankActionPerformed(evt);
+                addBankActionPerformed(evt);
             }
         });
 
@@ -76,6 +84,34 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewBankApplications.setText("View Bank Applications");
+        viewBankApplications.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewBankApplicationsActionPerformed(evt);
+            }
+        });
+
+        manageUser.setText("Manage user details");
+        manageUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageUserActionPerformed(evt);
+            }
+        });
+
+        addAdhar.setText("Add Adhar");
+        addAdhar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAdharActionPerformed(evt);
+            }
+        });
+
+        viewAdhar.setText("View Adhar");
+        viewAdhar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewAdharActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,18 +120,29 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
                 .addGap(39, 39, 39)
                 .addComponent(applyPassport)
                 .addGap(44, 44, 44)
-                .addComponent(viewBank)
+                .addComponent(addBank)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(bookDoctor)
                 .addGap(35, 35, 35))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(viewPassport)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backButton1)
                 .addGap(51, 51, 51))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(viewPassport)
+                        .addGap(44, 44, 44)
+                        .addComponent(viewBankApplications)
+                        .addGap(47, 47, 47)
+                        .addComponent(manageUser))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(addAdhar)
+                        .addGap(94, 94, 94)
+                        .addComponent(viewAdhar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,11 +152,18 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(applyPassport)
-                    .addComponent(viewBank)
+                    .addComponent(addBank)
                     .addComponent(bookDoctor))
                 .addGap(46, 46, 46)
-                .addComponent(viewPassport)
-                .addContainerGap(209, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewPassport)
+                    .addComponent(viewBankApplications)
+                    .addComponent(manageUser))
+                .addGap(61, 61, 61)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addAdhar)
+                    .addComponent(viewAdhar))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,7 +177,7 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
 
     private void applyPassportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_applyPassportActionPerformed
         // TODO add your handling code here:
-        ApplyPassportJPanel apjp = new ApplyPassportJPanel(layoutContainer);
+        ApplyPassportJPanel apjp = new ApplyPassportJPanel(layoutContainer, username);
         layoutContainer.add("ApplyPassportJPanel", apjp);
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
@@ -138,22 +192,63 @@ public class ManagePersonJPanel extends javax.swing.JPanel {
 
     private void viewPassportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPassportActionPerformed
         // TODO add your handling code here:
-        ManagePassportApplicationsJPanel vpjp = new ManagePassportApplicationsJPanel(layoutContainer);
+        ManagePassportApplicationsJPanel vpjp = new ManagePassportApplicationsJPanel(layoutContainer, username);
         layoutContainer.add("ViewPassportJPanel", vpjp);
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
     }//GEN-LAST:event_viewPassportActionPerformed
 
-    private void viewBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBankActionPerformed
+    private void addBankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBankActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_viewBankActionPerformed
+        AddBankJPanel abjp = new AddBankJPanel(layoutContainer, username);
+        layoutContainer.add("AddBankJPanel", abjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_addBankActionPerformed
+
+    private void viewBankApplicationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewBankApplicationsActionPerformed
+        // TODO add your handling code here:
+        ViewBankJPanel vbjp = new ViewBankJPanel(layoutContainer, username);
+        layoutContainer.add("ViewBankJPanel", vbjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_viewBankApplicationsActionPerformed
+
+    private void manageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUserActionPerformed
+        // TODO add your handling code here:
+        ManageUserJPanel mujp = new ManageUserJPanel(layoutContainer, username);
+        layoutContainer.add("ManageUserJPanel", mujp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_manageUserActionPerformed
+
+    private void addAdharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAdharActionPerformed
+        // TODO add your handling code here:ManageUserJPanel mujp = new ManageUserJPanel(layoutContainer, username);
+        AddAdharJPanel aajp = new AddAdharJPanel(layoutContainer, username);
+        layoutContainer.add("AddAdharJPanel", aajp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+        
+    }//GEN-LAST:event_addAdharActionPerformed
+
+    private void viewAdharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAdharActionPerformed
+        // TODO add your handling code here:
+        ViewAdharJPanel vajp = new ViewAdharJPanel(layoutContainer, username);
+        layoutContainer.add("ViewAdharJPanel", vajp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_viewAdharActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addAdhar;
+    private javax.swing.JButton addBank;
     private javax.swing.JButton applyPassport;
     private javax.swing.JButton backButton1;
     private javax.swing.JButton bookDoctor;
-    private javax.swing.JButton viewBank;
+    private javax.swing.JButton manageUser;
+    private javax.swing.JButton viewAdhar;
+    private javax.swing.JButton viewBankApplications;
     private javax.swing.JButton viewPassport;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,7 +28,7 @@
               <Component id="doctorButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pharmaButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="67" max="32767" attributes="0"/>
+              <EmptySpace pref="81" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,7 +43,7 @@
                   <Component id="doctorButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="pharmaButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="182" max="32767" attributes="0"/>
+              <EmptySpace pref="193" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

@@ -20,20 +20,34 @@
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="applyPassport" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Component id="viewBank" min="-2" max="-2" attributes="0"/>
+              <Component id="addBank" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="45" max="32767" attributes="0"/>
               <Component id="bookDoctor" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              <Component id="viewPassport" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="backButton1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Component id="viewPassport" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="viewBankApplications" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="manageUser" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="addAdhar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                      <Component id="viewAdhar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -45,12 +59,21 @@
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="applyPassport" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="viewBank" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addBank" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bookDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Component id="viewPassport" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="209" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="viewPassport" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="viewBankApplications" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="manageUser" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addAdhar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="viewAdhar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="119" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,12 +87,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="applyPassportActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="viewBank">
+    <Component class="javax.swing.JButton" name="addBank">
       <Properties>
         <Property name="text" type="java.lang.String" value="Apply for Bank Account"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewBankActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBankActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bookDoctor">
@@ -94,6 +117,38 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="viewBankApplications">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Bank Applications"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewBankApplicationsActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="manageUser">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Manage user details"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageUserActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="addAdhar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add Adhar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addAdharActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="viewAdhar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Adhar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewAdharActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
