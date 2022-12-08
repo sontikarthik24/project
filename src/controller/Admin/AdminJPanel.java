@@ -38,6 +38,7 @@ public class AdminJPanel extends javax.swing.JPanel {
         manageEnterprises = new javax.swing.JButton();
         manageOrganisations = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         manageNetworks.setText("Manage Networks");
         manageNetworks.addActionListener(new java.awt.event.ActionListener() {
@@ -67,14 +68,17 @@ public class AdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton)
-                .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(manageNetworks)
@@ -83,6 +87,15 @@ public class AdminJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(manageOrganisations)
                 .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(backButton)
+                        .addGap(35, 35, 35))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(39, 39, 39))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,7 +107,9 @@ public class AdminJPanel extends javax.swing.JPanel {
                     .addComponent(manageNetworks)
                     .addComponent(manageEnterprises)
                     .addComponent(manageOrganisations))
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addGap(132, 132, 132)
+                .addComponent(jButton1)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -129,9 +144,17 @@ public class AdminJPanel extends javax.swing.JPanel {
         layout.previous(layoutContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.first(layoutContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton manageEnterprises;
     private javax.swing.JButton manageNetworks;
     private javax.swing.JButton manageOrganisations;
