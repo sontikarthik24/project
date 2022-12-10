@@ -96,14 +96,6 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-        LoginJPanel ljp = new LoginJPanel(layoutContainer);
-        layoutContainer.add("HomeJPanel", ljp);
-        CardLayout layout = (CardLayout) layoutContainer.getLayout();
-        layout.next(layoutContainer);
-    }//GEN-LAST:event_loginButtonActionPerformed
-
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
         RegisterJPanel rjp = new RegisterJPanel(layoutContainer);
@@ -111,6 +103,14 @@ public class MainJFrame extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
     }//GEN-LAST:event_registerButtonActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+        LoginJPanel ljp = new LoginJPanel(layoutContainer);
+        layoutContainer.add("HomeJPanel", ljp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments

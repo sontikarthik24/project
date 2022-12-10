@@ -5,12 +5,16 @@
 package controller.Passport;
 
 import java.awt.CardLayout;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.DateFormat;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
@@ -23,6 +27,7 @@ import view.Register.RegisterJPanel;
 public class ApplyPassportJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
     String username;
+    String path;
     
     /**
      * Creates new form ApplyPassportJPanel
@@ -31,6 +36,7 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         initComponents();
         this.layoutContainer = layoutContainer;
         this.username = username; 
+        
     }
 
     /**
@@ -58,6 +64,8 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         submitButton = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        uploadButton = new javax.swing.JButton();
 
         jLabel1.setText("Name");
 
@@ -92,6 +100,15 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setText("Picture");
+
+        uploadButton.setText("Upload");
+        uploadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,17 +116,18 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(145, 145, 145)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(145, 145, 145)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel7))
                                 .addGap(67, 67, 67)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -122,13 +140,14 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
                                         .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(name, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(dob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))))
+                                        .addComponent(dob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
+                                    .addComponent(uploadButton))))
                         .addGap(47, 47, 47)
                         .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
+                        .addGap(229, 229, 229)
                         .addComponent(submitButton)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,9 +181,13 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(uploadButton))
+                .addGap(16, 16, 16)
                 .addComponent(submitButton)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -174,8 +197,9 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
         String gender = null;
         try {
+            InputStream is = new FileInputStream(new File(path));
             Connection conn = db.connect();
-            String sql = "insert into passportdata (name, dob, gender, address, phone, email, fileno, status, username) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into passportdata (name, dob, gender, address, phone, email, fileno, status, username, picture) values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, name.getText());
             statement.setString(2, dateFormat.format(dob.getDate()));
@@ -194,6 +218,7 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
             statement.setString(7, getFileNo());
             statement.setString(8, "Submitted");
             statement.setString(9, username);
+            statement.setBlob(10, is);
             int a = statement.executeUpdate(); 
             JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
@@ -216,6 +241,15 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.previous(layoutContainer);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showOpenDialog(null);
+        File f = fileChooser.getSelectedFile();
+        path=f.getAbsolutePath();
+        JOptionPane.showMessageDialog(this, "Picture Uploaded Successfully");
+    }//GEN-LAST:event_uploadButtonActionPerformed
 
     public String getFileNo() {
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -242,10 +276,12 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField name;
     private javax.swing.JTextField phone;
     private javax.swing.JButton submitButton;
+    private javax.swing.JButton uploadButton;
     // End of variables declaration//GEN-END:variables
 }
