@@ -5,6 +5,9 @@
 package controller.Adhar;
 
 import java.awt.CardLayout;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.lang.System.Logger.Level;
 import javax.swing.JPanel;
 import model.Database;
@@ -12,6 +15,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.DateFormat;
 import java.util.Random;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +26,7 @@ public class AddAdharJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
     String username;
     public static int count = 0;
+    String path;
     /**
      * Creates new form AddAdharJPanel
      */
@@ -56,6 +61,8 @@ public class AddAdharJPanel extends javax.swing.JPanel {
         male = new javax.swing.JRadioButton();
         female = new javax.swing.JRadioButton();
         dob = new com.toedter.calendar.JDateChooser();
+        jLabel7 = new javax.swing.JLabel();
+        uploadButton = new javax.swing.JButton();
 
         jLabel4.setText("Address");
 
@@ -90,6 +97,15 @@ public class AddAdharJPanel extends javax.swing.JPanel {
 
         female.setText("female");
 
+        jLabel7.setText("Picture");
+
+        uploadButton.setText("upload");
+        uploadButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                uploadButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,7 +123,8 @@ public class AddAdharJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel7))
                                 .addGap(67, 67, 67)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -120,11 +137,12 @@ public class AddAdharJPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(address, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(phone, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))))
+                                        .addComponent(email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                                    .addComponent(uploadButton))))
                         .addGap(47, 47, 47)
                         .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
+                        .addGap(227, 227, 227)
                         .addComponent(submitButton)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -156,13 +174,17 @@ public class AddAdharJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(uploadButton))
+                .addGap(18, 18, 18)
                 .addComponent(submitButton)
-                .addGap(51, 51, 51))
+                .addGap(32, 32, 32))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -180,8 +202,9 @@ public class AddAdharJPanel extends javax.swing.JPanel {
         String gender = null;
 
         try {
+            InputStream is = new FileInputStream(new File(path));
             Connection conn = db.connect();
-            String sql = "insert into adharapplications(id, name, dob, gender, address, phone, email, status, username) values(?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into adharapplications(id, name, dob, gender, address, phone, email, status, username, picture) values(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setInt(1, count++);
             statement.setString(2, name.getText());
@@ -200,6 +223,7 @@ public class AddAdharJPanel extends javax.swing.JPanel {
             statement.setString(7, email.getText());
             statement.setString(8, "Submitted");
             statement.setString(9, username);
+            statement.setBlob(10, is);
             int a = statement.executeUpdate();
            
             JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -217,6 +241,15 @@ public class AddAdharJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_submitButtonActionPerformed
 
+    private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.showOpenDialog(null);
+        File f = fileChooser.getSelectedFile();
+        path=f.getAbsolutePath();
+        JOptionPane.showMessageDialog(this, "Picture Uploaded Successfully");
+    }//GEN-LAST:event_uploadButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField address;
     private javax.swing.JButton backButton;
@@ -229,10 +262,12 @@ public class AddAdharJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField name;
     private javax.swing.JTextField phone;
     private javax.swing.JButton submitButton;
+    private javax.swing.JButton uploadButton;
     // End of variables declaration//GEN-END:variables
 }

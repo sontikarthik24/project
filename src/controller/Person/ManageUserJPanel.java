@@ -276,7 +276,7 @@ public class ManageUserJPanel extends javax.swing.JPanel {
         address.setText("");
         phone.setText("");
         email.setText("");
-
+        picture.setText("");
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

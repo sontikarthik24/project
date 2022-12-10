@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/karthiksonti/NetBeansProjects/project/src/controller/Bank/ViewBankJPanel.java</file>
             <file>file:/Users/karthiksonti/NetBeansProjects/project/src/view/Register/RegisterJPanel.java</file>
             <file>file:/Users/karthiksonti/NetBeansProjects/project/src/controller/Person/ManageUserJPanel.java</file>
-            <file>file:/Users/karthiksonti/NetBeansProjects/project/src/controller/Person/ManagePersonJPanel.java</file>
-            <file>file:/Users/karthiksonti/NetBeansProjects/project/src/controller/Admin/AdminJPanel.java</file>
-            <file>file:/Users/karthiksonti/NetBeansProjects/project/src/controller/Bank/BankAdminJPanel.java</file>
-            <file>file:/Users/karthiksonti/NetBeansProjects/project/src/controller/Adhar/AAdminNewJPanel.java</file>
+            <file>file:/Users/karthiksonti/NetBeansProjects/project/src/controller/Adhar/AddAdharJPanel.java</file>
+            <file>file:/Users/karthiksonti/NetBeansProjects/project/src/controller/Passport/ApplyPassportJPanel.java</file>
         </group>
     </open-files>
 </project-private>
