@@ -3,36 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Enterprise/AddEnterpriseJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Police/AddPoliceJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Admin/AdminJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Hospital/ManageHospitalJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Organisation/ManageOrganisationJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Doctor/AddDoctorJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Doctor/BookDoctorJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Organisation/AddOrganisationJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Passport/ApplyPassportJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/view/MainJFrame.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Police/PassportTaskJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Doctor/DoctorAddNotesJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Doctor/DoctorTaskJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Enterprise/ManageEnterpriseJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Organisation/ViewOrganisationJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Police/ManagePoliceJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Enterprise/ViewEnterpriseJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Identity/ManageIdentityJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Police/PoliceJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Doctor/ManageDoctorJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Passport/PasportAdminJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Hospital/AddHospitalJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Pharma/ManagePharmaJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Passport/ManagePassportApplicationsJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Doctor/DoctorViewHistoryJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Police/PoliceAdminJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Doctor/ViewDoctorJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Person/ManagePersonJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Network/ManageNetworkJPanel.java</file>
-            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/project-main/src/controller/Network/AddNetworkJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Doctor/DoctorTaskJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Doctor/ManageDoctorJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Doctor/ViewDoctorJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Hospital/ManageHospitalJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Identity/ManageIdentityJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Passport/ApplyPassportJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Enterprise/AddEnterpriseJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Admin/AdminJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Doctor/BookDoctorJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Doctor/DoctorAddNotesJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Doctor/DoctorViewHistoryJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Enterprise/ManageEnterpriseJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Doctor/AddDoctorJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Enterprise/ViewEnterpriseJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/controller/Hospital/AddHospitalJPanel.java</file>
+            <file>file:/C:/Users/sajja/OneDrive/Documents/NetBeansProjects/RProject/src/view/Login/LoginJPanel.java</file>
         </group>
     </open-files>
 </project-private>

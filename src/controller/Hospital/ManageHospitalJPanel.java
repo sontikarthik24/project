@@ -35,6 +35,7 @@ public class ManageHospitalJPanel extends javax.swing.JPanel {
         addHospital = new javax.swing.JButton();
         viewHospital = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 153, 153));
 
@@ -63,6 +64,8 @@ public class ManageHospitalJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Hospitals Details");
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Register/Images/hosp.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,26 +75,34 @@ public class ManageHospitalJPanel extends javax.swing.JPanel {
                 .addComponent(backButton)
                 .addGap(61, 61, 61)
                 .addComponent(jLabel1)
-                .addGap(0, 227, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(216, 216, 216)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(viewHospital)
-                    .addComponent(addHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(119, 119, 119)
+                .addComponent(addHospital, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(viewHospital)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(backButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(jLabel1))
-                .addGap(47, 47, 47)
-                .addComponent(addHospital)
-                .addGap(18, 18, 18)
-                .addComponent(viewHospital)
-                .addContainerGap(396, Short.MAX_VALUE))
+                    .addComponent(addHospital)
+                    .addComponent(viewHospital))
+                .addContainerGap(381, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,6 +134,7 @@ public class ManageHospitalJPanel extends javax.swing.JPanel {
     private javax.swing.JButton addHospital;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton viewHospital;
     // End of variables declaration//GEN-END:variables
 }

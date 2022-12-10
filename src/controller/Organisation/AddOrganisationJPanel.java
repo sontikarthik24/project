@@ -141,13 +141,11 @@ public class AddOrganisationJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(201, 201, 201)
+                .addComponent(addOrgnaisation)
+                .addContainerGap(279, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(201, 201, 201)
-                        .addComponent(addOrgnaisation))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(129, 129, 129)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -161,15 +159,18 @@ public class AddOrganisationJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(networkChoice, 0, 121, Short.MAX_VALUE)
                                     .addComponent(enterpriseChoice, 0, 121, Short.MAX_VALUE)
-                                    .addComponent(orgnaisationName))))))
-                .addContainerGap(194, Short.MAX_VALUE))
+                                    .addComponent(orgnaisationName)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(backButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(backButton)
-                .addGap(9, 9, 9)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel3)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -185,7 +186,7 @@ public class AddOrganisationJPanel extends javax.swing.JPanel {
                     .addComponent(networkName))
                 .addGap(33, 33, 33)
                 .addComponent(addOrgnaisation)
-                .addContainerGap(288, Short.MAX_VALUE))
+                .addContainerGap(282, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

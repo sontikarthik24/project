@@ -35,6 +35,7 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
         addDoctor = new javax.swing.JButton();
         viewDoctor = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 153, 153));
 
@@ -62,6 +63,8 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
         jLabel8.setText("Manage Doctors Functions");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Register/Images/firstaid.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,17 +80,24 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
                         .addGap(44, 44, 44)
                         .addComponent(backButton)
                         .addGap(84, 84, 84)
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(171, Short.MAX_VALUE))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(backButton)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(28, 28, 28)
                 .addComponent(addDoctor)
                 .addGap(18, 18, 18)
                 .addComponent(viewDoctor)
@@ -122,6 +132,7 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDoctor;
     private javax.swing.JButton backButton;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JButton viewDoctor;
     // End of variables declaration//GEN-END:variables

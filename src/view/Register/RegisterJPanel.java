@@ -6,12 +6,14 @@ package view.Register;
 
 import controller.Admin.AdminJPanel;
 import java.awt.CardLayout;
+import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
@@ -33,7 +35,19 @@ public class RegisterJPanel extends javax.swing.JPanel {
         alertMsg.setText("");
         this.layoutContainer = layoutContainer;
     }
-
+//    public void scaleImages()
+//    {
+//        ImageIcon icon = new ImageIcon("C:\\Users\\sajja\\OneDrive\\Desktop\\projImg\\registration.png");
+//        Image img = icon.getImage();
+//        //int width = 695;
+//        //int height = 600;
+//        Image imgScale = img.getScaledInstance(label.getWidth(),label.getHeight(), Image.SCALE_SMOOTH);
+//        ImageIcon scaledIcon = new ImageIcon(imgScale);
+//        label.setIcon(scaledIcon);
+//        
+//        
+//        
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +77,7 @@ public class RegisterJPanel extends javax.swing.JPanel {
         alertMsg = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         dob = new com.toedter.calendar.JDateChooser();
+        label = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -115,6 +130,8 @@ public class RegisterJPanel extends javax.swing.JPanel {
 
         jLabel8.setText("DOB");
 
+        label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Register/Images/register.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,18 +165,22 @@ public class RegisterJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(227, 227, 227)
                 .addComponent(registerButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(300, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(202, 202, 202)
+                .addContainerGap()
+                .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(alertMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(227, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(alertMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(alertMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -195,7 +216,7 @@ public class RegisterJPanel extends javax.swing.JPanel {
                     .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(registerButton)
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -261,6 +282,7 @@ public class RegisterJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel label;
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField name;
     private javax.swing.JPasswordField password;

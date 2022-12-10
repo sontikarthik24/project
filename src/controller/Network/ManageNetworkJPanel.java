@@ -34,6 +34,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         viewNetwork = new javax.swing.JButton();
         backButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 153, 153));
 
@@ -63,6 +64,8 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Network Details");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Register/Images/network.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,27 +75,34 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(backButton1)
-                        .addGap(54, 54, 54)
+                        .addGap(67, 67, 67)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(addNetwork)
-                            .addComponent(viewNetwork))))
-                .addContainerGap(244, Short.MAX_VALUE))
+                            .addComponent(viewNetwork, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(backButton1))
-                .addGap(32, 32, 32)
-                .addComponent(addNetwork)
-                .addGap(30, 30, 30)
-                .addComponent(viewNetwork)
-                .addContainerGap(389, Short.MAX_VALUE))
+                    .addComponent(backButton1)
+                    .addComponent(jLabel1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(addNetwork)
+                        .addGap(34, 34, 34)
+                        .addComponent(viewNetwork))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(319, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -125,6 +135,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private javax.swing.JButton addNetwork;
     private javax.swing.JButton backButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton viewNetwork;
     // End of variables declaration//GEN-END:variables
 }

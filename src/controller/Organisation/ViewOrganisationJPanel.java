@@ -83,6 +83,7 @@ public class ViewOrganisationJPanel extends javax.swing.JPanel {
         organisationData = new javax.swing.JTable();
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 153, 153));
 
@@ -110,6 +111,8 @@ public class ViewOrganisationJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("View Organisation Details");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Register/Images/organisations.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,7 +126,10 @@ public class ViewOrganisationJPanel extends javax.swing.JPanel {
                         .addGap(26, 26, 26)
                         .addComponent(backButton)
                         .addGap(126, 126, 126)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel4)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -135,7 +141,9 @@ public class ViewOrganisationJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(286, Short.MAX_VALUE))
+                .addGap(83, 83, 83)
+                .addComponent(jLabel4)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,6 +158,7 @@ public class ViewOrganisationJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable organisationData;
     // End of variables declaration//GEN-END:variables

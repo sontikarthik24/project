@@ -34,10 +34,17 @@ public class ManageIdentityJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         hospitalButton = new javax.swing.JButton();
         doctorButton = new javax.swing.JButton();
         pharmaButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        jLabel2.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("View Network Details");
 
         setBackground(new java.awt.Color(255, 153, 153));
 
@@ -48,55 +55,76 @@ public class ManageIdentityJPanel extends javax.swing.JPanel {
             }
         });
 
-        hospitalButton.setText("Hospital");
+        hospitalButton.setText("Hospital Details");
         hospitalButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hospitalButtonActionPerformed(evt);
             }
         });
 
-        doctorButton.setText("Doctor");
+        doctorButton.setText("Doctor Details");
         doctorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctorButtonActionPerformed(evt);
             }
         });
 
-        pharmaButton.setText("Pharma");
+        pharmaButton.setText("Pharma Details");
         pharmaButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pharmaButtonActionPerformed(evt);
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Register/Images/medical care.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Managing Identity Page");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
-                .addComponent(hospitalButton)
-                .addGap(44, 44, 44)
-                .addComponent(doctorButton)
-                .addGap(40, 40, 40)
-                .addComponent(pharmaButton)
-                .addGap(182, 182, 182))
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
-                .addComponent(backButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(backButton)
+                        .addGap(55, 55, 55)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(doctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hospitalButton)
+                            .addComponent(pharmaButton))))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(backButton)
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(doctorButton)
-                    .addComponent(hospitalButton)
-                    .addComponent(pharmaButton))
-                .addContainerGap(425, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(backButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel3)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addComponent(hospitalButton)
+                        .addGap(36, 36, 36)
+                        .addComponent(doctorButton)
+                        .addGap(37, 37, 37)
+                        .addComponent(pharmaButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -136,6 +164,9 @@ public class ManageIdentityJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JButton doctorButton;
     private javax.swing.JButton hospitalButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton pharmaButton;
     // End of variables declaration//GEN-END:variables
 }

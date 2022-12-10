@@ -36,6 +36,7 @@ public class ManageOrganisationJPanel extends javax.swing.JPanel {
         viewOrganisation = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 153, 153));
 
@@ -65,22 +66,26 @@ public class ManageOrganisationJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Manage Organisation Details");
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Register/Images/organisations.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(viewOrganisation)
-                            .addComponent(addOrganisation, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(backButton)
                         .addGap(73, 73, 73)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(viewOrganisation, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(addOrganisation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -90,11 +95,16 @@ public class ManageOrganisationJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
                     .addComponent(jLabel1))
-                .addGap(47, 47, 47)
-                .addComponent(addOrganisation)
-                .addGap(18, 18, 18)
-                .addComponent(viewOrganisation)
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(105, 105, 105)
+                        .addComponent(addOrganisation)
+                        .addGap(42, 42, 42)
+                        .addComponent(viewOrganisation))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel4)))
+                .addContainerGap(312, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -127,6 +137,7 @@ public class ManageOrganisationJPanel extends javax.swing.JPanel {
     private javax.swing.JButton addOrganisation;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton viewOrganisation;
     // End of variables declaration//GEN-END:variables
 }

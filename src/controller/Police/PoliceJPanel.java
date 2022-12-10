@@ -55,23 +55,23 @@ public class PoliceJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton)
-                .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(229, Short.MAX_VALUE)
                 .addComponent(viewTasks)
                 .addContainerGap(230, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(backButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(backButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
                 .addComponent(viewTasks)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addContainerGap(428, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

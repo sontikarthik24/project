@@ -106,7 +106,7 @@ public class ViewNetworkJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("View Networ Details");
+        jLabel1.setText("View Network Details");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -117,12 +117,12 @@ public class ViewNetworkJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(backButton2)
-                        .addGap(89, 89, 89)
+                        .addGap(105, 105, 105)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(100, 100, 100)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,9 +131,9 @@ public class ViewNetworkJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton2)
                     .addComponent(jLabel1))
-                .addGap(28, 28, 28)
+                .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(331, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
