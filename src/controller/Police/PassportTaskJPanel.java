@@ -7,6 +7,8 @@ package controller.Police;
 
 import controller.Passport.PasportAdminJPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,12 +18,13 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import model.Database;
 import model.Passport;
 
 /**
  *
- * @author karthiksonti
+ * @author rekha
  */
 public class PassportTaskJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
@@ -30,6 +33,12 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
      */
     public PassportTaskJPanel(JPanel layoutContainer) {
         initComponents();
+        passportData.getTableHeader().setFont(new Font("MV Boli",Font.BOLD,14));
+        passportData.getTableHeader().setOpaque(false);
+        passportData.getTableHeader().setBackground(Color.red);
+        passportData.getTableHeader().setForeground(new Color(255,255,255));
+        passportData.setRowHeight(25);
+        
         this.layoutContainer = layoutContainer;
         
         policeItems.removeAllItems();
@@ -57,7 +66,12 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
         }
         return policeList;
     }
-    
+    public void theader()
+    {
+        JTableHeader tbl=passportData.getTableHeader();
+        tbl.setForeground(Color.YELLOW);
+        tbl.setFont(new Font("MV Boli",Font.BOLD,14));
+    }
     private ArrayList<Passport> passportList() {
         ArrayList<Passport> PassportList = new ArrayList<>();
         
@@ -70,6 +84,7 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
             statement.setString(1, "Sent to police");
             ResultSet a = statement.executeQuery();
             Passport p;
+            theader();
             while(a.next()) {
                 PassportList.add(new Passport(a.getString("name"),a.getString("dob"), a.getString("gender"), a.getString("address"), a.getInt("phone"), a.getString("email"), a.getString("fileno"), a.getString("status")));
             }
@@ -82,7 +97,8 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
     private void addPassportData(){
         ArrayList<Passport> passportList = passportList();
         DefaultTableModel model = (DefaultTableModel) passportData.getModel();
-        model.setRowCount(0);
+
+      model.setRowCount(0);
         for(Passport p: passportList()){
             Object[] row = new Object[5];
             
@@ -113,7 +129,8 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
+        setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
 
         backButton3.setText("<<BACK");
         backButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -122,6 +139,7 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
             }
         });
 
+        passportData.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         passportData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -133,10 +151,15 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
                 "File No", "Name", "DOB", "Gender"
             }
         ));
+        passportData.setRowHeight(25);
+        passportData.setSelectionBackground(new java.awt.Color(204, 204, 0));
+        passportData.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(passportData);
 
         policeItems.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        submitButton.setBackground(new java.awt.Color(255, 204, 51));
+        submitButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,9 +167,10 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         jLabel1.setText("Assgin File to ");
 
-        jLabel10.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Passport Clearance");
 
@@ -157,9 +181,6 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(backButton3))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(161, 161, 161)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
@@ -168,29 +189,32 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
                         .addGap(229, 229, 229)
                         .addComponent(submitButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(82, Short.MAX_VALUE))
+                        .addGap(68, 68, 68)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(backButton3)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(backButton3)
-                .addGap(5, 5, 5)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton3))
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(policeItems, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(33, 33, 33)
                 .addComponent(submitButton)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(158, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
