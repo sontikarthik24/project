@@ -5,10 +5,12 @@
 package controller.Passport;
 
 import java.awt.CardLayout;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.DateFormat;
-import java.util.Properties;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,20 +18,21 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
 import view.Register.RegisterJPanel;
-import javax.mail.Message;
+/*import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
+*/
 /**
  *
  * @author karthiksonti
  */
 public class ApplyPassportJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
-    
+    String username;
+    String path;
     /**
      * Creates new form ApplyPassportJPanel
      */
@@ -178,17 +181,7 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         Database db = new Database();
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
         String gender = null;
-<<<<<<< Updated upstream
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into passportdata (name, dob, gender, address, phone, email, fileno, status) values(?,?,?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, name.getText());
-            statement.setString(2, dateFormat.format(dob.getDate()));
-            if(male.isSelected()) {
-                gender = "male";
-                male.setSelected(false);
-=======
+        
         boolean saveFlag = true;
         String namee = name.getText();
         String addresss = address.getText();
@@ -205,7 +198,6 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
             {
                 JOptionPane.showMessageDialog(this, "Please select Person Gender ");
                 saveFlag = false;
->>>>>>> Stashed changes
             }
             else if(addresss.isEmpty() || addresss.matches("[A-Z a-z]*\\s*?") == false)
             {
@@ -222,20 +214,6 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Enter valid person email");
                 saveFlag = false;
             }
-<<<<<<< Updated upstream
-            statement.setString(3, gender);
-            statement.setString(4, address.getText());
-            statement.setString(5, phone.getText());
-            statement.setString(6, email.getText());
-            statement.setString(7, getFileNo());
-            statement.setString(8, "Submitted");
-            int a = statement.executeUpdate(); 
-            JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            Logger.getLogger(RegisterJPanel.class.getName()).log(Level.SEVERE, null, ex);
-=======
->>>>>>> Stashed changes
-        }
         if(saveFlag == true)
         {
             try {
@@ -276,7 +254,7 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
             dob.cleanup();
         }
     }//GEN-LAST:event_submitButtonActionPerformed
-
+    }
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         layoutContainer.remove(this);
