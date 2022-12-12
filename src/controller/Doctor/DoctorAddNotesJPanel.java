@@ -227,54 +227,105 @@ public class DoctorAddNotesJPanel extends javax.swing.JPanel {
             drugMap.put(model.getValueAt(count, 0).toString(), Integer.valueOf(model.getValueAt(count, 1).toString()));
         }
         
-        Database db = new Database();
-        
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into patienthistory (bookingid, patient, doctor, pulse, bp, temp, drugs, notes) values(?,?,?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, id);
-            statement.setString(2, patient);
-            statement.setString(3, doctor);
-            statement.setInt(4, Integer.valueOf(pulse.getText()));
-            statement.setInt(5, Integer.valueOf(bp.getText()));
-            statement.setInt(6, Integer.valueOf(temp.getText()));
-            statement.setString(7, drugMap.toString());
-            statement.setString(8, extraNotes.getText());
-            statement.executeUpdate();
+        boolean saveFlag = true;
+        String temperatureDataInput = temp.getText();
+        String pulseInput = pulse.getText();
+        String bloodPressureInput= bp.getText();
+        if(temperatureDataInput.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please input Temperature");
+            saveFlag = false;
+        }
+        else if(pulseInput.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please input Pulse");
+            saveFlag = false;
+        }
+        else if(bloodPressureInput.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Please input Blood Pressure");
+            saveFlag = false;
+        }
+        try
+        {
+            double temp = Double.parseDouble(temperatureDataInput);
+            int pul = Integer.parseInt(pulseInput);
+            double bp = Double.parseDouble(bloodPressureInput);
             
+            if(temp >105 || temp <95)
+            {
+                JOptionPane.showMessageDialog(this, "Please input correct temperature between 95 to 105");
+                saveFlag = false;
+            }
+            if(pul >100 || pul <60)
+            {
+                JOptionPane.showMessageDialog(this, "Please input correct pulse between 60 to 100");
+                saveFlag = false;
+            }
+            if(bp >180 || bp <120)
+            {
+                JOptionPane.showMessageDialog(this, "Please input correct blood pressure between 120 to 180");
+                saveFlag = false;
+            }
             
-            String sql1 = "update doctortask set status=? where bookingid=?";
-            PreparedStatement statement1 = conn.prepareStatement(sql1);
-            statement1.setString(1, "done");
-            statement1.setString(2, id);
-            statement1.executeUpdate();
-            
-            String sql2 = "insert into pharmaorders (bookingid, patient, doctor, hospital, drugs, status) values(?,?,?,?,?,?)";
-            PreparedStatement statement2 = conn.prepareStatement(sql2);
-            statement2.setString(1, id);
-            statement2.setString(2, patient);
-            statement2.setString(3, doctor);
-            statement2.setString(4, hospital);
-            statement2.setString(5, drugMap.toString());
-            statement2.setString(6, "Not Delivered");
-            statement2.executeUpdate();
-            
-            JOptionPane.showMessageDialog(this, "Notes Saved", "Success", JOptionPane.INFORMATION_MESSAGE);
-            
-            
-        } catch (Exception ex) {
-            Logger.getLogger(DoctorAddNotesJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        catch (NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(this, "Please check the values");
+            saveFlag = false;
         }
         
-        db.disconnect();
-        bp.setText("");
-        temp.setText("");
-        pulse.setText("");
-        extraNotes.setText("");
-        drugName.setText("");
-        quantity.setText("");
-        model.setRowCount(0);
+        if(saveFlag == true)
+        {
+            Database db = new Database();
+
+            try {
+                Connection conn = db.connect();
+                String sql = "insert into patienthistory (bookingid, patient, doctor, pulse, bp, temp, drugs, notes) values(?,?,?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, id);
+                statement.setString(2, patient);
+                statement.setString(3, doctor);
+                statement.setInt(4, Integer.valueOf(pulse.getText()));
+                statement.setInt(5, Integer.valueOf(bp.getText()));
+                statement.setInt(6, Integer.valueOf(temp.getText()));
+                statement.setString(7, drugMap.toString());
+                statement.setString(8, extraNotes.getText());
+                statement.executeUpdate();
+
+
+                String sql1 = "update doctortask set status=? where bookingid=?";
+                PreparedStatement statement1 = conn.prepareStatement(sql1);
+                statement1.setString(1, "done");
+                statement1.setString(2, id);
+                statement1.executeUpdate();
+
+                String sql2 = "insert into pharmaorders (bookingid, patient, doctor, hospital, drugs, status) values(?,?,?,?,?,?)";
+                PreparedStatement statement2 = conn.prepareStatement(sql2);
+                statement2.setString(1, id);
+                statement2.setString(2, patient);
+                statement2.setString(3, doctor);
+                statement2.setString(4, hospital);
+                statement2.setString(5, drugMap.toString());
+                statement2.setString(6, "Not Delivered");
+                statement2.executeUpdate();
+
+                JOptionPane.showMessageDialog(this, "Notes Saved", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+
+            } catch (Exception ex) {
+                Logger.getLogger(DoctorAddNotesJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            db.disconnect();
+            bp.setText("");
+            temp.setText("");
+            pulse.setText("");
+            extraNotes.setText("");
+            drugName.setText("");
+            quantity.setText("");
+            model.setRowCount(0);
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

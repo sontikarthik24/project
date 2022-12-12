@@ -132,20 +132,41 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
     private void addEnterpriseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEnterpriseActionPerformed
         // TODO add your handling code here:
-        Database db = new Database();
-        count++;
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into enterprises (id, enterprise, network) values(?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, count);
-            statement.setString(2, enterpriseName.getText());
-            statement.setString(3, networkChoice.getSelectedItem().toString());
-            int a = statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Enterprise Created Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        boolean saveFlag = true;
+        String enterpriseNamee = enterpriseName.getText();
+        if(saveFlag == true)
+        {
+            if(enterpriseName.getText().isEmpty() || enterpriseName.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
+            }
+        }
+        String networkChoicee = null;
+        if(networkChoice.getItemCount() == 0){
+            JOptionPane.showMessageDialog(this, "Please add network");
+            saveFlag = false;
+            return;
+        }else{
+             networkChoicee = networkChoice.getSelectedItem().toString();
+        }
+        if(saveFlag == true)
+        {
+            Database db = new Database();
+            count++;
+            try {
+                Connection conn = db.connect();
+                String sql = "insert into enterprises (id, enterprise, network) values(?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setInt(1, count);
+                statement.setString(2, enterpriseName.getText());
+                statement.setString(3, networkChoice.getSelectedItem().toString());
+                int a = statement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Enterprise Created Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (Exception ex) {
-            Logger.getLogger(AddEnterpriseJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(AddEnterpriseJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_addEnterpriseActionPerformed
 

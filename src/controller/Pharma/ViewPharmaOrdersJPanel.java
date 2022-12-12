@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
 
@@ -126,10 +127,21 @@ public class ViewPharmaOrdersJPanel extends javax.swing.JPanel {
 
     private void goButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goButtonActionPerformed
         // TODO add your handling code here:
-        PharmaOrdersJPanel pojp = new PharmaOrdersJPanel(layoutContainer, hospitalName.getSelectedItem().toString());
-        layoutContainer.add("PharmaOrdersJPanel", pojp);
-        CardLayout layout = (CardLayout) layoutContainer.getLayout();
-        layout.next(layoutContainer);
+        boolean saveFlag = true;
+        String hospitalNamee = null;
+        if(hospitalName.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please select hospital");
+            saveFlag = false;
+            return;
+        }
+        if(saveFlag == true)
+        {
+            PharmaOrdersJPanel pojp = new PharmaOrdersJPanel(layoutContainer, hospitalName.getSelectedItem().toString());
+            layoutContainer.add("PharmaOrdersJPanel", pojp);
+            CardLayout layout = (CardLayout) layoutContainer.getLayout();
+            layout.next(layoutContainer);
+        }
     }//GEN-LAST:event_goButtonActionPerformed
 
 

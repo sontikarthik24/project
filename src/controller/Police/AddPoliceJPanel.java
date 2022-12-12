@@ -196,41 +196,87 @@ public class AddPoliceJPanel extends javax.swing.JPanel {
         String gender = null;
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
         
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into userdata (name, username, password, gender, address, role, phone, email, dob) values(?,?,?,?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, name.getText());
-            statement.setString(2, username.getText());
-            statement.setString(3, password.getText());
-            if(male.isSelected()) {
-                gender = "male";
-                male.setSelected(false);
+        boolean saveFlag = true;
+        String namee = name.getText();
+        String usernamee = username.getText();
+        String addresss = address.getText();
+        String phonee = phone.getText();
+        String emaill = email.getText();
+        if( saveFlag == true)
+        {
+            if(name.getText().isEmpty() || namee.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
             }
-            if(female.isSelected()) {
-                gender = "female";
-                female.setSelected(false);
+            else if(username.getText().isEmpty() || usernamee.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid username");
+                saveFlag = false;
             }
-            statement.setString(4, gender);
-            statement.setString(5, address.getText());
-            statement.setString(6, "Police");
-            statement.setString(7, phone.getText());
-            statement.setString(8, email.getText());
-            statement.setString(9, dateFormat.format(dob.getDate()));
-            int a = statement.executeUpdate(); 
-            JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            java.util.logging.Logger.getLogger(AddPoliceJPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            else if(password.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid password");
+                saveFlag = false;
+            }
+            else if(male.isSelected() == false && female.isSelected()== false)
+            {
+                JOptionPane.showMessageDialog(this, "Please select Police Gender ");
+                saveFlag = false;
+            }
+            else if(addresss.isEmpty() || addresss.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person House");
+                saveFlag = false;
+            }
+            else if(phonee.isEmpty() || phonee.matches("[0-9]+") ==  false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person Phone number");
+                saveFlag = false;
+            }
+            else if(emaill.isEmpty() || emaill.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person email");
+                saveFlag = false;
+            }
         }
+        if(saveFlag == true)
+            {
+            try {
+                Connection conn = db.connect();
+                String sql = "insert into userdata (name, username, password, gender, address, role, phone, email, dob) values(?,?,?,?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, name.getText());
+                statement.setString(2, username.getText());
+                statement.setString(3, password.getText());
+                if(male.isSelected()) {
+                    gender = "male";
+                    male.setSelected(false);
+                }
+                if(female.isSelected()) {
+                    gender = "female";
+                    female.setSelected(false);
+                }
+                statement.setString(4, gender);
+                statement.setString(5, address.getText());
+                statement.setString(6, "Police");
+                statement.setString(7, phone.getText());
+                statement.setString(8, email.getText());
+                statement.setString(9, dateFormat.format(dob.getDate()));
+                int a = statement.executeUpdate(); 
+                JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                java.util.logging.Logger.getLogger(AddPoliceJPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
 
-        db.disconnect();
-        name.setText("");
-        username.setText("");
-        password.setText("");
-        address.setText("");
-        phone.setText("");
-        email.setText("");
-
+            db.disconnect();
+            name.setText("");
+            username.setText("");
+            password.setText("");
+            address.setText("");
+            phone.setText("");
+            email.setText("");
+            }
     }//GEN-LAST:event_registerButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

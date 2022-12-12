@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -139,6 +140,27 @@ public class AddPharmaJPanel extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
+        boolean saveFlag = true;
+        String pharmaNamee = pharmaName.getText();
+        if(saveFlag == true)
+        {
+            if(pharmaNamee.isEmpty() || pharmaNamee.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid pharmacy name");
+                saveFlag = false;
+            }
+        }
+        String hospitalNamee = null;
+        if(hospitalName.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please select hospital");
+            saveFlag = false;
+            return;
+        }
+        else
+        {
+             hospitalNamee = hospitalName.getSelectedItem().toString();
+        }
         Database db = new Database();
         count++;
         try {

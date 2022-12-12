@@ -99,19 +99,32 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
 
     private void addNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNetworkActionPerformed
         // TODO add your handling code here:
-        Database db = new Database();
-        count++;
-        try {
-            conn = db.connect();
-            String sql = "insert into networks (id, network) values(?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, count);
-            statement.setString(2, networkName.getText());
-            int a = statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Network Created Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-            
-        } catch (Exception ex) {
-            Logger.getLogger(AddNetworkJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        boolean saveFlag = true;
+        String networkNamee = networkName.getText();
+        if(saveFlag == true)
+        {
+            if(networkNamee.isEmpty() || networkName.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
+            }
+        }
+        if(saveFlag == true)
+        {
+            Database db = new Database();
+            count++;
+            try {
+                conn = db.connect();
+                String sql = "insert into networks (id, network) values(?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setInt(1, count);
+                statement.setString(2, networkName.getText());
+                int a = statement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Network Created Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            } catch (Exception ex) {
+                Logger.getLogger(AddNetworkJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_addNetworkActionPerformed
 

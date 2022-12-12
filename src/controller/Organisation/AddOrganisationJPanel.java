@@ -168,21 +168,56 @@ public class AddOrganisationJPanel extends javax.swing.JPanel {
 
     private void addOrgnaisationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOrgnaisationActionPerformed
         // TODO add your handling code here:
-        Database db = new Database();
-        count++;
-        try {
-            conn = db.connect();
-            String sql = "insert into organisations (id, organisation, enterprise, network) values(?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, count);
-            statement.setString(2, orgnaisationName.getText());
-            statement.setString(3, enterpriseChoice.getSelectedItem().toString());
-            statement.setString(4, networkChoice.getSelectedItem().toString());
-            int a = statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Enterprise Created Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        boolean saveFlag = true;
+        String organisationNamee = orgnaisationName.getText();
+        if(saveFlag == true)
+        {
+            if(organisationNamee.isEmpty() || organisationNamee.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid organisation name");
+                saveFlag = false;
+            }
+        }
+        String networkChoicee = null;
+        if(networkChoice.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please add network");
+            saveFlag = false;
+            return;
+        }
+        else
+        {
+             networkChoicee = networkChoice.getSelectedItem().toString();
+        }
+        String enterpriseChoicee = null;
+        if(enterpriseChoice.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please add enterprise");
+            saveFlag = false;
+            return;
+        }
+        else
+        {
+             enterpriseChoicee = enterpriseChoice.getSelectedItem().toString();
+        }
+        if(saveFlag == true)
+        {
+            Database db = new Database();
+            count++;
+            try {
+                conn = db.connect();
+                String sql = "insert into organisations (id, organisation, enterprise, network) values(?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setInt(1, count);
+                statement.setString(2, orgnaisationName.getText());
+                statement.setString(3, enterpriseChoice.getSelectedItem().toString());
+                statement.setString(4, networkChoice.getSelectedItem().toString());
+                int a = statement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Enterprise Created Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-        } catch (Exception ex) {
-            Logger.getLogger(AddEnterpriseJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(AddEnterpriseJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_addOrgnaisationActionPerformed
 

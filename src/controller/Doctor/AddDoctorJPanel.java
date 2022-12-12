@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
 
@@ -142,20 +143,32 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Database db = new Database();
         count++;
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into doctordata (id, doctor, hospitalname) values(?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, count);
-            statement.setString(2, doctorName.getText());
-            statement.setString(3, hospitalName.getSelectedItem().toString());
-            statement.executeUpdate();
-            db.disconnect();
-            doctorName.setText("");
-        } catch (Exception ex) {
-            Logger.getLogger(AddHospitalJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        boolean saveFlag = true;
+        String doctorNamee = doctorName.getText();
+        if(saveFlag == true)
+        {
+            if(doctorName.getText().isEmpty() || doctorName.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
+            }
         }
-
+        if(saveFlag == true)
+        {
+            try {
+                Connection conn = db.connect();
+                String sql = "insert into doctordata (id, doctor, hospitalname) values(?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setInt(1, count);
+                statement.setString(2, doctorName.getText());
+                statement.setString(3, hospitalName.getSelectedItem().toString());
+                statement.executeUpdate();
+                db.disconnect();
+                doctorName.setText("");
+            } catch (Exception ex) {
+                Logger.getLogger(AddHospitalJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
 
