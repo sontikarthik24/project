@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author karthiksonti
+ * @author rekha
  */
 public class PoliceJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
@@ -35,7 +35,7 @@ public class PoliceJPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         viewTasks = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         backButton.setText("<<BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -44,6 +44,8 @@ public class PoliceJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewTasks.setBackground(new java.awt.Color(255, 204, 51));
+        viewTasks.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         viewTasks.setText("View Assigned Tasks");
         viewTasks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -56,23 +58,22 @@ public class PoliceJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(backButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(viewTasks)))
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGap(210, 210, 210)
+                .addComponent(viewTasks)
+                .addContainerGap(220, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(48, 48, 48))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(99, 99, 99)
                 .addComponent(backButton)
-                .addGap(46, 46, 46)
+                .addGap(34, 34, 34)
                 .addComponent(viewTasks)
-                .addContainerGap(423, Short.MAX_VALUE))
+                .addContainerGap(416, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

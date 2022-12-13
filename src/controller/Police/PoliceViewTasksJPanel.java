@@ -19,7 +19,7 @@ import model.Task;
 
 /**
  *
- * @author karthiksonti
+ * @author rekha
  */
 public class PoliceViewTasksJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
@@ -94,7 +94,7 @@ public class PoliceViewTasksJPanel extends javax.swing.JPanel {
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Police Administrator's Work Area");
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         backButton7.setText("<<BACK");
         backButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -116,21 +116,27 @@ public class PoliceViewTasksJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(taskData);
 
+        passButton.setBackground(new java.awt.Color(255, 204, 51));
+        passButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         passButton.setText("Pass Verification");
+        passButton.setBorder(new javax.swing.border.MatteBorder(null));
         passButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passButtonActionPerformed(evt);
             }
         });
 
+        failButton.setBackground(new java.awt.Color(255, 204, 51));
+        failButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         failButton.setText("Fail Verification");
+        failButton.setBorder(new javax.swing.border.MatteBorder(null));
         failButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 failButtonActionPerformed(evt);
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Tasks Assigned to Police");
 
@@ -139,36 +145,35 @@ public class PoliceViewTasksJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(passButton)
-                                .addGap(83, 83, 83)
-                                .addComponent(failButton))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(backButton7)
-                        .addGap(52, 52, 52)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(138, 138, 138)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(passButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(failButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(154, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(166, 166, 166)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton7)
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton7)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton7))
                 .addGap(17, 17, 17)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passButton)
                     .addComponent(failButton))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(215, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

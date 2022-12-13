@@ -92,7 +92,7 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
         appointmentButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         backButton.setText("<<BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,16 +114,22 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(doctorData);
 
+        jLabel1.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         jLabel1.setText("Reason for visit");
 
+        reason.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        appointmentButton.setBackground(new java.awt.Color(255, 204, 51));
+        appointmentButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         appointmentButton.setText("Book Appointment");
+        appointmentButton.setBorder(new javax.swing.border.MatteBorder(null));
         appointmentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 appointmentButtonActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Book Doctor's Appointment");
 
@@ -140,25 +146,25 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(backButton)
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(143, 143, 143)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(209, 209, 209)
                         .addComponent(appointmentButton)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
@@ -167,7 +173,7 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addGap(26, 26, 26)
                 .addComponent(appointmentButton)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

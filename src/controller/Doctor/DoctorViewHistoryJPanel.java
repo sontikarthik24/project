@@ -88,7 +88,7 @@ public class DoctorViewHistoryJPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         historyData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,7 +110,7 @@ public class DoctorViewHistoryJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Patient's History");
 
@@ -119,11 +119,11 @@ public class DoctorViewHistoryJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(backButton)
-                .addGap(18, 18, 18)
+                .addGap(122, 122, 122)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backButton)
+                .addGap(31, 31, 31))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(87, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

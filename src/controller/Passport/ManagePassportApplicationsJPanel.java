@@ -88,7 +88,7 @@ public class ManagePassportApplicationsJPanel extends javax.swing.JPanel {
         passportData = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         backButton.setText("<<BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class ManagePassportApplicationsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(passportData);
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Manage Passport Application Details");
 
@@ -119,10 +119,10 @@ public class ManagePassportApplicationsJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(124, 124, 124)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(backButton)
-                .addGap(53, 53, 53)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(89, Short.MAX_VALUE)
@@ -133,9 +133,9 @@ public class ManagePassportApplicationsJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(92, 92, 92)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton))
                 .addGap(32, 32, 32)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(239, Short.MAX_VALUE))

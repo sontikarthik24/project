@@ -38,12 +38,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        layoutContainer.setBackground(new java.awt.Color(255, 153, 153));
+        layoutContainer.setBackground(new java.awt.Color(0, 102, 102));
         layoutContainer.setLayout(new java.awt.CardLayout());
         jSplitPane1.setRightComponent(layoutContainer);
 
-        jPanel2.setBackground(new java.awt.Color(255, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 
+        loginButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         loginButton.setText("Login");
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +52,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        registerButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         registerButton.setText("Register");
         registerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,14 +64,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(registerButton))
-                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(registerButton)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +76,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(loginButton)
                 .addGap(18, 18, 18)
                 .addComponent(registerButton)
-                .addContainerGap(336, Short.MAX_VALUE))
+                .addContainerGap(322, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel2);

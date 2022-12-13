@@ -93,7 +93,7 @@ public class AAdminNewJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         backButton.setText("<<BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -102,14 +102,20 @@ public class AAdminNewJPanel extends javax.swing.JPanel {
             }
         });
 
+        accept.setBackground(new java.awt.Color(255, 204, 51));
+        accept.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         accept.setText("Accept");
+        accept.setBorder(new javax.swing.border.MatteBorder(null));
         accept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 acceptActionPerformed(evt);
             }
         });
 
+        reject.setBackground(new java.awt.Color(255, 204, 51));
+        reject.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         reject.setText("Reject");
+        reject.setBorder(new javax.swing.border.MatteBorder(null));
         reject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rejectActionPerformed(evt);
@@ -129,7 +135,7 @@ public class AAdminNewJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(bankData);
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Aadhar Administrator's Work Area");
 
@@ -181,7 +187,7 @@ public class AAdminNewJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(reject)
                     .addComponent(accept))
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -104,7 +104,7 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
         viewPatientHistory = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         doctorTask.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -114,7 +114,7 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Booking Id", "patient", "reason"
+                "Booking Id", "Patient", "Reason"
             }
         ));
         jScrollPane1.setViewportView(doctorTask);
@@ -126,21 +126,27 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
             }
         });
 
+        addNotes.setBackground(new java.awt.Color(255, 204, 51));
+        addNotes.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         addNotes.setText("Add Notes");
+        addNotes.setBorder(new javax.swing.border.MatteBorder(null));
         addNotes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNotesActionPerformed(evt);
             }
         });
 
+        viewPatientHistory.setBackground(new java.awt.Color(255, 204, 51));
+        viewPatientHistory.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         viewPatientHistory.setText("View Patient History");
+        viewPatientHistory.setBorder(new javax.swing.border.MatteBorder(null));
         viewPatientHistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewPatientHistoryActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Doctor's Tasks");
 
@@ -151,34 +157,35 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(BackButton)
-                        .addGap(49, 49, 49)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
-                        .addComponent(addNotes)
-                        .addGap(49, 49, 49)
-                        .addComponent(viewPatientHistory))
+                        .addComponent(addNotes, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(viewPatientHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(79, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(141, 141, 141)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BackButton)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BackButton)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BackButton))
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(addNotes)
                     .addComponent(viewPatientHistory))
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

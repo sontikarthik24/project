@@ -41,8 +41,10 @@ public class AdminJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
+        manageNetworks.setBackground(new java.awt.Color(255, 204, 51));
+        manageNetworks.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         manageNetworks.setText("Manage Networks");
         manageNetworks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,6 +52,8 @@ public class AdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        manageEnterprises.setBackground(new java.awt.Color(255, 204, 51));
+        manageEnterprises.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         manageEnterprises.setText("Manage Enterprises");
         manageEnterprises.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,6 +61,8 @@ public class AdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        manageOrganisations.setBackground(new java.awt.Color(255, 204, 51));
+        manageOrganisations.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         manageOrganisations.setText("Manage Organisations");
         manageOrganisations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +77,10 @@ public class AdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(255, 204, 51));
+        jButton1.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         jButton1.setText("jButton1");
+        jButton1.setBorder(new javax.swing.border.MatteBorder(null));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -85,42 +94,45 @@ public class AdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(backButton)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(160, 160, 160))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manageOrganisations)
-                    .addComponent(manageNetworks, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageEnterprises, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(181, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(manageOrganisations)
+                            .addComponent(manageEnterprises, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                            .addComponent(manageNetworks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(141, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(92, 92, 92))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(backButton)
+                                .addGap(32, 32, 32))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
+                        .addGap(80, 80, 80)
                         .addComponent(backButton)
-                        .addGap(42, 42, 42)
+                        .addGap(34, 34, 34)
                         .addComponent(manageEnterprises)
-                        .addGap(53, 53, 53)
+                        .addGap(39, 39, 39)
                         .addComponent(manageNetworks)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(manageOrganisations))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(92, 92, 92)
+                .addGap(52, 52, 52)
                 .addComponent(jButton1)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(213, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

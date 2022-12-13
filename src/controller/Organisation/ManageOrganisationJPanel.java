@@ -37,8 +37,10 @@ public class ManageOrganisationJPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
+        addOrganisation.setBackground(new java.awt.Color(255, 204, 51));
+        addOrganisation.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         addOrganisation.setText("Add Organisation Details");
         addOrganisation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -46,6 +48,8 @@ public class ManageOrganisationJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewOrganisation.setBackground(new java.awt.Color(255, 204, 51));
+        viewOrganisation.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         viewOrganisation.setText("View Organisation Details");
         viewOrganisation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,7 +64,7 @@ public class ManageOrganisationJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setFont(new java.awt.Font("Calibri", 2, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Manage Organisation Details");
 
@@ -71,29 +75,29 @@ public class ManageOrganisationJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(backButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(148, 148, 148)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(backButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(210, 210, 210)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(viewOrganisation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(addOrganisation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(86, 86, 86)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton))
                 .addGap(47, 47, 47)
                 .addComponent(addOrganisation)
                 .addGap(43, 43, 43)
                 .addComponent(viewOrganisation)
-                .addContainerGap(334, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
