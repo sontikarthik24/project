@@ -37,6 +37,10 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
         loadI = new javax.swing.JButton();
         viewI = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 102, 102));
+
+        back.setBackground(new java.awt.Color(255, 204, 51));
+        back.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         back.setText("<<BACK");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,13 +48,18 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
             }
         });
 
+        logout.setBackground(new java.awt.Color(255, 204, 51));
+        logout.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         logout.setText("Logout");
+        logout.setBorder(new javax.swing.border.MatteBorder(null));
         logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutActionPerformed(evt);
             }
         });
 
+        addP.setBackground(new java.awt.Color(255, 204, 51));
+        addP.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         addP.setText("Add Pharma");
         addP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +67,8 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewP.setBackground(new java.awt.Color(255, 204, 51));
+        viewP.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         viewP.setText("View Pharma");
         viewP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +76,8 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
             }
         });
 
+        loadI.setBackground(new java.awt.Color(255, 204, 51));
+        loadI.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         loadI.setText("Load Inventory");
         loadI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -72,6 +85,8 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
             }
         });
 
+        viewI.setBackground(new java.awt.Color(255, 204, 51));
+        viewI.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         viewI.setText("View Inventory");
         viewI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,37 +98,39 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(logout)
-                    .addComponent(back))
-                .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
-                .addGap(213, 213, 213)
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewI)
-                    .addComponent(loadI)
-                    .addComponent(viewP)
-                    .addComponent(addP))
-                .addContainerGap(352, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(viewI)
+                            .addComponent(loadI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(viewP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(addP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(238, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(back)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logout)
+                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(back)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(back)
+                    .addComponent(logout))
+                .addGap(51, 51, 51)
                 .addComponent(addP)
-                .addGap(41, 41, 41)
-                .addComponent(viewP)
                 .addGap(40, 40, 40)
-                .addComponent(loadI)
+                .addComponent(viewP)
                 .addGap(37, 37, 37)
+                .addComponent(loadI)
+                .addGap(34, 34, 34)
                 .addComponent(viewI)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(logout)
-                .addGap(47, 47, 47))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

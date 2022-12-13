@@ -100,7 +100,7 @@ public class ManageUserJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         phone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 

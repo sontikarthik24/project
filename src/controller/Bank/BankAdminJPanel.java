@@ -199,7 +199,7 @@ public class BankAdminJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(accept)
                     .addComponent(reject))
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
