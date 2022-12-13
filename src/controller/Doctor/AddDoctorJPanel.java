@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
 
@@ -177,6 +178,18 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         Database db = new Database();
         count++;
+        boolean saveFlag = true;
+        String doctorNamee = doctorName.getText();
+        if(saveFlag == true)
+        {
+            if(doctorName.getText().isEmpty() || doctorName.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
+            }
+        }
+        if(saveFlag == true)
+        {
         try {
             Connection conn = db.connect();
             String sql = "insert into doctordata (id, doctor, hospitalname) values(?,?,?)";
@@ -189,6 +202,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
             doctorName.setText("");
         } catch (Exception ex) {
             Logger.getLogger(AddHospitalJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         }
 
     }//GEN-LAST:event_saveButtonActionPerformed

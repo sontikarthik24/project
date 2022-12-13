@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Database;
 
@@ -128,21 +129,33 @@ public class AddHospitalJPanel extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-        Database db = new Database();
-        count++;
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into hospitaldata (id, hospitalname) values(?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, count);
-            statement.setString(2, hospitalName.getText());
-            statement.executeUpdate();
-            db.disconnect();
-            hospitalName.setText("");
-        } catch (Exception ex) {
-            Logger.getLogger(AddHospitalJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        boolean saveFlag = true;
+        String hospitalNamee = hospitalName.getText();
+        if(saveFlag == true)
+        {
+            if(hospitalNamee.isEmpty() || hospitalName.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
+            }
         }
-        
+        if(saveFlag == true)
+        {
+            Database db = new Database();
+            count++;
+            try {
+                Connection conn = db.connect();
+                String sql = "insert into hospitaldata (id, hospitalname) values(?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setInt(1, count);
+                statement.setString(2, hospitalName.getText());
+                statement.executeUpdate();
+                db.disconnect();
+                hospitalName.setText("");
+            } catch (Exception ex) {
+                Logger.getLogger(AddHospitalJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
 

@@ -233,45 +233,79 @@ public class AddAdharJPanel extends javax.swing.JPanel {
         Database db = new Database();
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
         String gender = null;
-
-        try {
-            InputStream is = new FileInputStream(new File(path));
-            Connection conn = db.connect();
-            String sql = "insert into adharapplications(id, name, dob, gender, address, phone, email, status, username, picture) values(?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, count++);
-            statement.setString(2, name.getText());
-            statement.setString(3, dateFormat.format(dob.getDate()));
-            if(male.isSelected()) {
-                gender = "male";
-                male.setSelected(false);
+        boolean saveFlag = true;
+        String namee = name.getText();
+        String addresss = address.getText();
+        String phonee = phone.getText();
+        String emaill = email.getText();
+        if( saveFlag == true)
+        {
+            if(name.getText().isEmpty() || name.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
+            }  
+            else if(male.isSelected() == false && female.isSelected()== false)
+            {
+                JOptionPane.showMessageDialog(this, "Please select Person Gender ");
+                saveFlag = false;
             }
-            if(female.isSelected()) {
-                gender = "female";
-                female.setSelected(false);
+            else if(addresss.isEmpty() || addresss.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person House");
+                saveFlag = false;
             }
-            statement.setString(4, gender);
-            statement.setString(5, address.getText());
-            statement.setString(6, phone.getText());
-            statement.setString(7, email.getText());
-            statement.setString(8, "Submitted");
-            statement.setString(9, username);
-            statement.setBlob(10, is);
-            int a = statement.executeUpdate();
-           
-            JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            java.util.logging.Logger.getLogger(AddAdharJPanel.class.getName());
+            else if(phonee.isEmpty() || phonee.matches("[0-9]+") ==  false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person Phone number");
+                saveFlag = false;
+            }
+            else if(emaill.isEmpty() || emaill.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person email");
+                saveFlag = false;
+            }
         }
+        if(saveFlag == true)
+        {
+            try {
+                InputStream is = new FileInputStream(new File(path));
+                Connection conn = db.connect();
+                String sql = "insert into adharapplications(id, name, dob, gender, address, phone, email, status, username, picture) values(?,?,?,?,?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setInt(1, count++);
+                statement.setString(2, name.getText());
+                statement.setString(3, dateFormat.format(dob.getDate()));
+                if(male.isSelected()) {
+                    gender = "male";
+                    male.setSelected(false);
+                }
+                if(female.isSelected()) {
+                    gender = "female";
+                    female.setSelected(false);
+                }
+                statement.setString(4, gender);
+                statement.setString(5, address.getText());
+                statement.setString(6, phone.getText());
+                statement.setString(7, email.getText());
+                statement.setString(8, "Submitted");
+                statement.setString(9, username);
+                statement.setBlob(10, is);
+                int a = statement.executeUpdate();
 
-        db.disconnect();
+                JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                java.util.logging.Logger.getLogger(AddAdharJPanel.class.getName());
+            }
 
-        name.setText("");
-        address.setText("");
-        phone.setText("");
-        email.setText("");
-        dob.cleanup();
-        
+            db.disconnect();
+
+            name.setText("");
+            address.setText("");
+            phone.setText("");
+            email.setText("");
+            dob.cleanup();
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed

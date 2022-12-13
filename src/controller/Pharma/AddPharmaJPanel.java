@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -168,20 +169,43 @@ public class AddPharmaJPanel extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-        Database db = new Database();
-        count++;
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into pharmadata (id, pharma, hospitalname) values(?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, count);
-            statement.setString(2, pharmaName.getText());
-            statement.setString(3, hospitalName.getSelectedItem().toString());
-            statement.executeUpdate();
-            db.disconnect();
-            pharmaName.setText("");
-        } catch (Exception ex) {
-            Logger.getLogger(AddPharmaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+         boolean saveFlag = true;
+        String pharmaNamee = pharmaName.getText();
+        if(saveFlag == true)
+        {
+            if(pharmaNamee.isEmpty() || pharmaNamee.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid pharmacy name");
+                saveFlag = false;
+            }
+        }
+        String hospitalNamee = null;
+        if(hospitalName.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please select hospital");
+            saveFlag = false;
+            return;
+        }
+        else
+        {
+             hospitalNamee = hospitalName.getSelectedItem().toString();
+        }
+        if(saveFlag == true){
+            Database db = new Database();
+            count++;
+            try {
+                Connection conn = db.connect();
+                String sql = "insert into pharmadata (id, pharma, hospitalname) values(?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setInt(1, count);
+                statement.setString(2, pharmaName.getText());
+                statement.setString(3, hospitalName.getSelectedItem().toString());
+                statement.executeUpdate();
+                db.disconnect();
+                pharmaName.setText("");
+            } catch (Exception ex) {
+                Logger.getLogger(AddPharmaJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 

@@ -191,7 +191,17 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select a row for selecting a doctor", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+        boolean saveFlag = true;
+        if(saveFlag == true)
+        {
+            if(reason.getText().isEmpty() || reason.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid reason");
+                saveFlag = false;
+            }
+        }
+        if(saveFlag == true)
+        {
         Database db = new Database();
         try {
             Connection conn = db.connect();
@@ -212,6 +222,7 @@ public class BookDoctorJPanel extends javax.swing.JPanel {
         db.disconnect();
         
         reason.setText("");
+        }
     }//GEN-LAST:event_appointmentButtonActionPerformed
 
     public String getFileNo() {

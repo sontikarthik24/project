@@ -239,34 +239,69 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         Database db = new Database();
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
         String gender = null;
-        try {
-            InputStream is = new FileInputStream(new File(path));
-            Connection conn = db.connect();
-            String sql = "insert into passportdata (name, dob, gender, address, phone, email, fileno, status, username, picture) values(?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, name.getText());
-            statement.setString(2, dateFormat.format(dob.getDate()));
-            if(male.isSelected()) {
-                gender = "male";
-                male.setSelected(false);
+        boolean saveFlag = true;
+        String namee = name.getText();
+        String addresss = address.getText();
+        String phonee = phone.getText();
+        String emaill = email.getText();
+        if( saveFlag == true)
+        {
+            if(name.getText().isEmpty() || name.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
+            }  
+            else if(male.isSelected() == false && female.isSelected()== false)
+            {
+                JOptionPane.showMessageDialog(this, "Please select Person Gender ");
+                saveFlag = false;
             }
-            if(female.isSelected()) {
-                gender = "female";
-                female.setSelected(false);
+            else if(addresss.isEmpty() || addresss.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person House");
+                saveFlag = false;
             }
-            statement.setString(3, gender);
-            statement.setString(4, address.getText());
-            statement.setString(5, phone.getText());
-            statement.setString(6, email.getText());
-            statement.setString(7, getFileNo());
-            statement.setString(8, "Submitted");
-            statement.setString(9, username);
-            statement.setBlob(10, is);
-            int a = statement.executeUpdate(); 
-            JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            Logger.getLogger(RegisterJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            else if(phonee.isEmpty() || phonee.matches("[0-9]+") ==  false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person Phone number");
+                saveFlag = false;
+            }
+            else if(emaill.isEmpty() || emaill.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person email");
+                saveFlag = false;
+            }
         }
+        if(saveFlag == true)
+        {
+            try {
+                InputStream is = new FileInputStream(new File(path));
+                Connection conn = db.connect();
+                String sql = "insert into passportdata (name, dob, gender, address, phone, email, fileno, status, username, picture) values(?,?,?,?,?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, name.getText());
+                statement.setString(2, dateFormat.format(dob.getDate()));
+                if(male.isSelected()) {
+                    gender = "male";
+                    male.setSelected(false);
+                }
+                if(female.isSelected()) {
+                    gender = "female";
+                    female.setSelected(false);
+                }
+                statement.setString(3, gender);
+                statement.setString(4, address.getText());
+                statement.setString(5, phone.getText());
+                statement.setString(6, email.getText());
+                statement.setString(7, getFileNo());
+                statement.setString(8, "Submitted");
+                statement.setString(9, username);
+                statement.setBlob(10, is);
+                int a = statement.executeUpdate(); 
+                JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                Logger.getLogger(RegisterJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
         db.disconnect();
         
@@ -275,7 +310,7 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         phone.setText("");
         email.setText("");
         dob.cleanup();
-        
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
