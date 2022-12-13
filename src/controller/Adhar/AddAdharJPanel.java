@@ -8,13 +8,11 @@ import java.awt.CardLayout;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.lang.System.Logger.Level;
 import javax.swing.JPanel;
 import model.Database;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.DateFormat;
-import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
