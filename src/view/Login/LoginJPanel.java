@@ -132,89 +132,107 @@ public class LoginJPanel extends javax.swing.JPanel {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        Database db = new Database();
-        
-        try {
-            conn = db.connect();
-            String sql = "select * from userdata where username=? and password=?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, username.getText());
-            statement.setString(2, password.getText());
-            ResultSet a = statement.executeQuery();
-        
-            if(a.next()) {
-                JOptionPane.showMessageDialog(this, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-                if(a.getString("role").equals("Person")){
-                    ManagePersonJPanel mpjp = new ManagePersonJPanel(layoutContainer, a.getString("username"));
-                    layoutContainer.add("ManagePersonJPanel", mpjp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else if(a.getString("role").equals("Passport")){
-                    PasportAdminJPanel pajp = new PasportAdminJPanel(layoutContainer);
-                    layoutContainer.add("PassportAdminJPanel", pajp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else if(a.getString("role").equals("Policeadmin")){
-                    PoliceAdminJPanel pajp = new PoliceAdminJPanel(layoutContainer);
-                    layoutContainer.add("PoliceAdminJPanel", pajp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else if(a.getString("role").equals("Police")){
-                    PoliceJPanel pjp = new PoliceJPanel(layoutContainer, username.getText());
-                    layoutContainer.add("PoliceJPanel", pjp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else if(a.getString("role").equals("Medicaladmin")){
-                    ManageMedicalJPanel mijp = new ManageMedicalJPanel(layoutContainer);
-                    layoutContainer.add("ManageIdentityJPanel", mijp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else if(a.getString("role").equals("Doctor")){
-                    DoctorTaskJPanel dtjp = new DoctorTaskJPanel(layoutContainer, a.getString("username"));
-                    layoutContainer.add("DoctorTaskJPanel", dtjp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else if(a.getString("role").equals("Pharmaadmin")){
-                    ViewPharmaOrdersJPanel vpojp = new ViewPharmaOrdersJPanel(layoutContainer);
-                    layoutContainer.add("ViewPharmaOrdersJPanel", vpojp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else if(a.getString("role").equals("Bankadmin")){
-                    BankAdminJPanel bajp = new BankAdminJPanel(layoutContainer);
-                    layoutContainer.add("ViewPharmaOrdersJPanel", bajp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else if(a.getString("role").equals("Adharadmin")){
-                    AAdminNewJPanel aawjp = new AAdminNewJPanel(layoutContainer);
-                    layoutContainer.add("AAdminNewJPanel", aawjp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-                else {
-                    AdminJPanel ajp = new AdminJPanel(layoutContainer);
-                    layoutContainer.add("AdminJPanel", ajp);
-                    CardLayout layout = (CardLayout) layoutContainer.getLayout();
-                    layout.next(layoutContainer);
-                }
-            } else{
-                JOptionPane.showMessageDialog(this, "Login Failed !!!!!!", "Warning", JOptionPane.WARNING_MESSAGE);
+        boolean saveFlag = true;
+        String passwordd = password.getText();
+        if( saveFlag == true)
+        {
+            if(username.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(this, "Please enter username");
+                saveFlag = false;
             }
-            
-        } catch (Exception ex) {
-            Logger.getLogger(LoginJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            else if(passwordd.isEmpty())
+            {
+                JOptionPane.showMessageDialog(this, "Please enter password");
+                saveFlag = false;
+            }   
         }
-        
-        db.disconnect();
-        username.setText("");
-        password.setText("");
+        if(saveFlag == true)
+        {
+            Database db = new Database();
+
+            try {
+                conn = db.connect();
+                String sql = "select * from userdata where username=? and password=?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, username.getText());
+                statement.setString(2, password.getText());
+                ResultSet a = statement.executeQuery();
+
+                if(a.next()) {
+                    JOptionPane.showMessageDialog(this, "Login Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+                    if(a.getString("role").equals("Person")){
+                        ManagePersonJPanel mpjp = new ManagePersonJPanel(layoutContainer, a.getString("username"));
+                        layoutContainer.add("ManagePersonJPanel", mpjp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else if(a.getString("role").equals("Passport")){
+                        PasportAdminJPanel pajp = new PasportAdminJPanel(layoutContainer);
+                        layoutContainer.add("PassportAdminJPanel", pajp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else if(a.getString("role").equals("Policeadmin")){
+                        PoliceAdminJPanel pajp = new PoliceAdminJPanel(layoutContainer);
+                        layoutContainer.add("PoliceAdminJPanel", pajp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else if(a.getString("role").equals("Police")){
+                        PoliceJPanel pjp = new PoliceJPanel(layoutContainer, username.getText());
+                        layoutContainer.add("PoliceJPanel", pjp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else if(a.getString("role").equals("Medicaladmin")){
+                        ManageMedicalJPanel mijp = new ManageMedicalJPanel(layoutContainer);
+                        layoutContainer.add("ManageIdentityJPanel", mijp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else if(a.getString("role").equals("Doctor")){
+                        DoctorTaskJPanel dtjp = new DoctorTaskJPanel(layoutContainer, a.getString("username"));
+                        layoutContainer.add("DoctorTaskJPanel", dtjp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else if(a.getString("role").equals("Pharmaadmin")){
+                        ViewPharmaOrdersJPanel vpojp = new ViewPharmaOrdersJPanel(layoutContainer);
+                        layoutContainer.add("ViewPharmaOrdersJPanel", vpojp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else if(a.getString("role").equals("Bankadmin")){
+                        BankAdminJPanel bajp = new BankAdminJPanel(layoutContainer);
+                        layoutContainer.add("ViewPharmaOrdersJPanel", bajp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else if(a.getString("role").equals("Adharadmin")){
+                        AAdminNewJPanel aawjp = new AAdminNewJPanel(layoutContainer);
+                        layoutContainer.add("AAdminNewJPanel", aawjp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                    else {
+                        AdminJPanel ajp = new AdminJPanel(layoutContainer);
+                        layoutContainer.add("AdminJPanel", ajp);
+                        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+                        layout.next(layoutContainer);
+                    }
+                } else{
+                    JOptionPane.showMessageDialog(this, "Login Failed !!!!!!", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+
+            } catch (Exception ex) {
+                Logger.getLogger(LoginJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            db.disconnect();
+            username.setText("");
+            password.setText("");
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
 
