@@ -86,7 +86,7 @@ public class ViewHospitalJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 153, 153));
+        setBackground(new java.awt.Color(0, 102, 102));
 
         backButton.setBackground(new java.awt.Color(255, 204, 51));
         backButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N

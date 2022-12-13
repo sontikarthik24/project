@@ -118,6 +118,8 @@ public class ApplyPassportJPanel extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
         jLabel8.setText("Paspport Portal");
 
+        backButton.setBackground(new java.awt.Color(255, 204, 51));
+        backButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         backButton.setText("<<BACK");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
