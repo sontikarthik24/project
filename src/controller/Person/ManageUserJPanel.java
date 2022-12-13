@@ -268,44 +268,89 @@ public class ManageUserJPanel extends javax.swing.JPanel {
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
         String gender = null;
         
-        
-        
-
-        try {
-            Connection conn = db.connect();
-            String sql = "update userdata set name=?, password=?, gender=?, address=?, role=?, phone=?, email=?, dob=? where username=?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, name.getText());
-            statement.setString(2, password.getText());
-            if(male.isSelected()) {
-                gender = "male";
-                male.setSelected(false);
+        boolean saveFlag = true;
+        String namee = name.getText();
+        String usernamee = username.getText();
+        String addresss = address.getText();
+        String phonee = phone.getText();
+        String emaill = email.getText();
+        if( saveFlag == true)
+        {
+            if(name.getText().isEmpty() || namee.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
             }
-            if(female.isSelected()) {
-                gender = "female";
-                female.setSelected(false);
+            else if(username.getText().isEmpty() || usernamee.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid username");
+                saveFlag = false;
             }
-            statement.setString(3, gender);
-            statement.setString(4, address.getText());
-            statement.setString(5, "Person");
-            statement.setString(6, phone.getText());
-            statement.setString(7, email.getText());
-            statement.setString(8, d);
-            statement.setString(9, username.getText());
-            int a = statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Update Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            Logger.getLogger(ManageUserJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            else if(password.getText().isEmpty())
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid password");
+                saveFlag = false;
+            }
+            else if(male.isSelected() == false && female.isSelected()== false)
+            {
+                JOptionPane.showMessageDialog(this, "Please select Police Gender ");
+                saveFlag = false;
+            }
+            else if(addresss.isEmpty() || addresss.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person House");
+                saveFlag = false;
+            }
+            else if(phonee.isEmpty() || phonee.matches("[0-9]+") ==  false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person Phone number");
+                saveFlag = false;
+            }
+            else if(emaill.isEmpty() || emaill.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person email");
+                saveFlag = false;
+            }
         }
+        
+        if(saveFlag == true)
+        { 
+            try {
+                Connection conn = db.connect();
+                String sql = "update userdata set name=?, password=?, gender=?, address=?, role=?, phone=?, email=?, dob=? where username=?";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, name.getText());
+                statement.setString(2, password.getText());
+                if(male.isSelected()) {
+                    gender = "male";
+                    male.setSelected(false);
+                }
+                if(female.isSelected()) {
+                    gender = "female";
+                    female.setSelected(false);
+                }
+                statement.setString(3, gender);
+                statement.setString(4, address.getText());
+                statement.setString(5, "Person");
+                statement.setString(6, phone.getText());
+                statement.setString(7, email.getText());
+                statement.setString(8, d);
+                statement.setString(9, username.getText());
+                int a = statement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Update Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                Logger.getLogger(ManageUserJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        db.disconnect();
-        name.setText("");
-        username.setText("");
-        password.setText("");
-        address.setText("");
-        phone.setText("");
-        email.setText("");
-        picture.setText("");
+            db.disconnect();
+            name.setText("");
+            username.setText("");
+            password.setText("");
+            address.setText("");
+            phone.setText("");
+            email.setText("");
+            picture.setText("");
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -50,7 +50,6 @@ public class AddBankJPanel extends javax.swing.JPanel {
         name = new javax.swing.JTextField();
         male = new javax.swing.JRadioButton();
         female = new javax.swing.JRadioButton();
-        dob = new com.toedter.calendar.JDateChooser();
         address = new javax.swing.JTextField();
         phone = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -97,8 +96,6 @@ public class AddBankJPanel extends javax.swing.JPanel {
                 femaleActionPerformed(evt);
             }
         });
-
-        dob.setBorder(new javax.swing.border.MatteBorder(null));
 
         address.setBorder(new javax.swing.border.MatteBorder(null));
 
@@ -155,7 +152,6 @@ public class AddBankJPanel extends javax.swing.JPanel {
                         .addComponent(male)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(female))
-                    .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pan, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -189,13 +185,11 @@ public class AddBankJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(23, 23, 23)
+                .addComponent(jLabel2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(male)
@@ -206,9 +200,9 @@ public class AddBankJPanel extends javax.swing.JPanel {
                     .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(pan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,43 +230,84 @@ public class AddBankJPanel extends javax.swing.JPanel {
         DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.DEFAULT);
         String gender = null;
         
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into bankapplications(id, name, dob, gender, address, phone, email, status, username, pan) values(?,?,?,?,?,?,?,?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setInt(1, count++);
-            statement.setString(2, name.getText());
-            statement.setString(3, dateFormat.format(dob.getDate()));
-            if(male.isSelected()) {
-                gender = "male";
-                male.setSelected(false);
+         boolean saveFlag = true;
+        String namee = name.getText();
+        String addresss = address.getText();
+        String pann = pan.getText();
+        String phonee = phone.getText();
+        String emaill = email.getText();
+        if( saveFlag ==  true)
+        {
+            if(name.getText().isEmpty() || name.getText().matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid name");
+                saveFlag = false;
             }
-            if(female.isSelected()) {
-                gender = "female";
-                female.setSelected(false);
+            else if(male.isSelected() == false && female.isSelected()== false)
+            {
+                JOptionPane.showMessageDialog(this, "Please select Person Gender ");
+                saveFlag = false;
             }
-            statement.setString(4, gender);
-            statement.setString(5, address.getText());
-            statement.setString(6, phone.getText());
-            statement.setString(7, email.getText());
-            statement.setString(8, "Submitted");
-            statement.setString(9, username);
-            statement.setString(10, pan.getText());
-            int a = statement.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            java.util.logging.Logger.getLogger(AddBankJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            else if(addresss.isEmpty() || addresss.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid address");
+                saveFlag = false;
+            }
+            else if(pann.isEmpty() || pann.matches("[0-9]+") ==  false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid PAN number");
+                saveFlag = false;
+            }
+            else if(phonee.isEmpty() || phonee.matches("[0-9]+") ==  false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid Phone number");
+                saveFlag = false;
+            }
+            else if(emaill.isEmpty() || emaill.matches("[A-Z a-z]*\\s*?") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter valid person email");
+                saveFlag = false;
+            }
         }
-        
-        db.disconnect();
+       if(saveFlag == true)
+        {
+            try {
+                Connection conn = db.connect();
+                String sql = "insert into bankapplications(id, name, dob, gender, address, phone, email, status, username, pan) values(?,?,?,?,?,?,?,?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setInt(1, count++);
+                statement.setString(2, name.getText());
+                statement.setString(3, dateFormat.format(dob.getDate()));
+                if(male.isSelected()) {
+                    gender = "male";
+                    male.setSelected(false);
+                }
+                if(female.isSelected()) {
+                    gender = "female";
+                    female.setSelected(false);
+                }
+                statement.setString(4, gender);
+                statement.setString(5, address.getText());
+                statement.setString(6, phone.getText());
+                statement.setString(7, email.getText());
+                statement.setString(8, "Submitted");
+                statement.setString(9, username);
+                statement.setString(10, pan.getText());
+                int a = statement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Registration Successful", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } catch (Exception ex) {
+                java.util.logging.Logger.getLogger(AddBankJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
-        name.setText("");
-        address.setText("");
-        phone.setText("");
-        email.setText("");
-        dob.cleanup();
-        pan.setText("");
+            db.disconnect();
 
+            name.setText("");
+            address.setText("");
+            phone.setText("");
+            email.setText("");
+            dob.cleanup();
+            pan.setText("");
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void femaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_femaleActionPerformed
@@ -283,7 +318,6 @@ public class AddBankJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField address;
     private javax.swing.JButton backButton;
-    private com.toedter.calendar.JDateChooser dob;
     private javax.swing.JTextField email;
     private javax.swing.JRadioButton female;
     private javax.swing.JEditorPane jEditorPane1;

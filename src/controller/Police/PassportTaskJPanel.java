@@ -227,33 +227,43 @@ public class PassportTaskJPanel extends javax.swing.JPanel {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-        int rowIndex = passportData.getSelectedRow();
-        if (rowIndex<0){
-            JOptionPane.showMessageDialog(this, "Please select a row for assiging it to police", "Warning", JOptionPane.WARNING_MESSAGE);
+        boolean saveFlag = true;
+        if(policeItems.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "Please select police");
+            saveFlag = false;
             return;
         }
-        
-        Database db = new Database();
-        
-        try {
-            Connection conn = db.connect();
-            String sql = "insert into passporttask (fileno, police, status) values(?,?,?)";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, passportData.getValueAt(rowIndex, 0).toString());
-            statement.setString(2, policeItems.getSelectedItem().toString());
-            statement.setString(3, "Assigned");
-            statement.executeUpdate();
-            
-            String sql1 = "update passportdata set status=? where fileno=?";
-            PreparedStatement statement1 = conn.prepareStatement(sql1);
-            statement1.setString(1, "with police");
-            statement1.setString(2, passportData.getValueAt(rowIndex, 0).toString());
-            statement1.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Successfully Assigned to Police for Verification", "Success", JOptionPane.INFORMATION_MESSAGE);
-            addPassportData();
-                    
-        } catch (Exception ex) {
-            Logger.getLogger(PassportTaskJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        if(saveFlag == true)
+        {
+            int rowIndex = passportData.getSelectedRow();
+            if (rowIndex<0){
+                JOptionPane.showMessageDialog(this, "Please select a row for assiging it to police", "Warning", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            Database db = new Database();
+
+            try {
+                Connection conn = db.connect();
+                String sql = "insert into passporttask (fileno, police, status) values(?,?,?)";
+                PreparedStatement statement = conn.prepareStatement(sql);
+                statement.setString(1, passportData.getValueAt(rowIndex, 0).toString());
+                statement.setString(2, policeItems.getSelectedItem().toString());
+                statement.setString(3, "Assigned");
+                statement.executeUpdate();
+
+                String sql1 = "update passportdata set status=? where fileno=?";
+                PreparedStatement statement1 = conn.prepareStatement(sql1);
+                statement1.setString(1, "with police");
+                statement1.setString(2, passportData.getValueAt(rowIndex, 0).toString());
+                statement1.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Successfully Assigned to Police for Verification", "Success", JOptionPane.INFORMATION_MESSAGE);
+                addPassportData();
+
+            } catch (Exception ex) {
+                Logger.getLogger(PassportTaskJPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
