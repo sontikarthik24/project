@@ -9,13 +9,12 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author rekha
+ * @author karthiksonti
  */
 public class ManagePharmaJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
-    
     /**
-     * Creates new form ManagePharmaJPanel
+     * Creates new form ManagePJPanel
      */
     public ManagePharmaJPanel(JPanel layoutContainer) {
         initComponents();
@@ -31,57 +30,52 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        addPharma = new javax.swing.JButton();
-        viewPharma = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
+        addP = new javax.swing.JButton();
+        viewP = new javax.swing.JButton();
+        loadI = new javax.swing.JButton();
+        viewI = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 102, 102));
-
-        addPharma.setBackground(new java.awt.Color(255, 204, 51));
-        addPharma.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
-        addPharma.setText("Add Pharmacy");
-        addPharma.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        addPharma.addActionListener(new java.awt.event.ActionListener() {
+        back.setText("<<BACK");
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addPharmaActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
 
-        viewPharma.setBackground(new java.awt.Color(255, 204, 51));
-        viewPharma.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
-        viewPharma.setText("View Pharmacy");
-        viewPharma.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        viewPharma.addActionListener(new java.awt.event.ActionListener() {
+        logout.setText("Logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewPharmaActionPerformed(evt);
+                logoutActionPerformed(evt);
             }
         });
 
-        backButton.setBackground(new java.awt.Color(255, 204, 51));
-        backButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
-        backButton.setText("<<BACK");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        addP.setText("Add Pharma");
+        addP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                addPActionPerformed(evt);
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("MV Boli", 1, 18)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Manage Pharmacy");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Images/pharmacy.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-
-        jButton1.setBackground(new java.awt.Color(255, 204, 51));
-        jButton1.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
-        jButton1.setText("Logout");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        viewP.setText("View Pharma");
+        viewP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                viewPActionPerformed(evt);
+            }
+        });
+
+        loadI.setText("Load Inventory");
+        loadI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadIActionPerformed(evt);
+            }
+        });
+
+        viewI.setText("View Inventory");
+        viewI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewIActionPerformed(evt);
             }
         });
 
@@ -89,83 +83,93 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(178, 178, 178))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addPharma, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewPharma, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logout)
+                    .addComponent(back))
+                .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(backButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(78, 78, 78))
+                .addGap(213, 213, 213)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(viewI)
+                    .addComponent(loadI)
+                    .addComponent(viewP)
+                    .addComponent(addP))
+                .addContainerGap(352, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(jButton1))
-                .addGap(11, 11, 11)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(addPharma)
-                        .addGap(57, 57, 57)
-                        .addComponent(viewPharma)))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addComponent(back)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addP)
+                .addGap(41, 41, 41)
+                .addComponent(viewP)
+                .addGap(40, 40, 40)
+                .addComponent(loadI)
+                .addGap(37, 37, 37)
+                .addComponent(viewI)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addComponent(logout)
+                .addGap(47, 47, 47))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addPharmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPharmaActionPerformed
+    private void addPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPActionPerformed
         // TODO add your handling code here:
         AddPharmaJPanel apjp = new AddPharmaJPanel(layoutContainer);
         layoutContainer.add("AddPharmaJPanel", apjp);
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
-    }//GEN-LAST:event_addPharmaActionPerformed
+    }//GEN-LAST:event_addPActionPerformed
 
-    private void viewPharmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPharmaActionPerformed
+    private void viewPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPActionPerformed
         // TODO add your handling code here:
         ViewPharmaJPanel vpjp = new ViewPharmaJPanel(layoutContainer);
         layoutContainer.add("ViewPharmaJPanel", vpjp);
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
-    }//GEN-LAST:event_viewPharmaActionPerformed
+    }//GEN-LAST:event_viewPActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void loadIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadIActionPerformed
+        // TODO add your handling code here:
+        LoadPharmaJPanel vpjp = new LoadPharmaJPanel(layoutContainer);
+        layoutContainer.add("LoadPharmaJPanel", vpjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_loadIActionPerformed
+
+    private void viewIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIActionPerformed
+        // TODO add your handling code here:
+        ViewPharmaIJPanel vpjp = new ViewPharmaIJPanel(layoutContainer);
+        layoutContainer.add("ViewPharmaIJPanel", vpjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_viewIActionPerformed
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         // TODO add your handling code here:
         layoutContainer.remove(this);
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.previous(layoutContainer);
-    }//GEN-LAST:event_backButtonActionPerformed
+    }//GEN-LAST:event_backActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
         // TODO add your handling code here:
         layoutContainer.remove(this);
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.first(layoutContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_logoutActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addPharma;
-    private javax.swing.JButton backButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JButton viewPharma;
+    private javax.swing.JButton addP;
+    private javax.swing.JButton back;
+    private javax.swing.JButton loadI;
+    private javax.swing.JButton logout;
+    private javax.swing.JButton viewI;
+    private javax.swing.JButton viewP;
     // End of variables declaration//GEN-END:variables
 }

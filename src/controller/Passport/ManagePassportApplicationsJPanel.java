@@ -5,7 +5,6 @@
 
 package controller.Passport;
 
-import controller.Network.ViewNetworkJPanel;
 import java.awt.CardLayout;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,7 +15,6 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import model.Database;
-import model.Organisation;
 import model.Passport;
 
 /**

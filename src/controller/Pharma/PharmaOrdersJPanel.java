@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,6 +29,7 @@ import model.Organisation;
 public class PharmaOrdersJPanel extends javax.swing.JPanel {
     JPanel layoutContainer;
     String hospital;
+    Map<String, Integer> myMap = new HashMap<String, Integer>();
     
     /**
      * Creates new form PharmaOrdersJPanel
@@ -121,6 +124,9 @@ public class PharmaOrdersJPanel extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(orderData);
+        if (orderData.getColumnModel().getColumnCount() > 0) {
+            orderData.getColumnModel().getColumn(3).setHeaderValue("Drugs");
+        }
 
         jButton1.setBackground(new java.awt.Color(255, 204, 51));
         jButton1.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
@@ -195,6 +201,7 @@ public class PharmaOrdersJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         int rowIndex = orderData.getSelectedRow();
         if (rowIndex<0){
             JOptionPane.showMessageDialog(this, "Please select a row for delivering drugs", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -217,6 +224,7 @@ public class PharmaOrdersJPanel extends javax.swing.JPanel {
         } catch (Exception ex) {
             Logger.getLogger(PharmaOrdersJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

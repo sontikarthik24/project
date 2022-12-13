@@ -114,11 +114,6 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(doctorData);
 
-        searchTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchTxtActionPerformed(evt);
-            }
-        });
         searchTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 searchTxtKeyPressed(evt);
@@ -204,7 +199,6 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.first(layoutContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;

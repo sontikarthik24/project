@@ -69,6 +69,11 @@ public class LoginJPanel extends javax.swing.JPanel {
         jLabel2.setText("Password");
 
         username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
+            }
+        });
 
         password.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -234,6 +239,10 @@ public class LoginJPanel extends javax.swing.JPanel {
             password.setText("");
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
