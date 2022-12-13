@@ -6,6 +6,7 @@ package controller.Pharma;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,6 +38,8 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        loadInventory = new javax.swing.JButton();
+        loadInventory1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
@@ -82,6 +85,23 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+        loadInventory.setBackground(new java.awt.Color(255, 204, 51));
+        loadInventory.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
+        loadInventory.setText("Load Inventory");
+        loadInventory.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        loadInventory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadInventoryActionPerformed(evt);
+            }
+        });
+
+        loadInventory1.setBackground(new java.awt.Color(255, 204, 51));
+        loadInventory1.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
+        loadInventory1.setText("View Inventory");
+        loadInventory1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        loadInventory1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadInventory1ActionPerformed(evt);
             }
         });
 
@@ -95,11 +115,15 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
                 .addGap(178, 178, 178))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(addPharma, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewPharma, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(loadInventory1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(addPharma, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(viewPharma, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loadInventory, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
@@ -126,6 +150,12 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
                         .addGap(57, 57, 57)
                         .addComponent(viewPharma)))
                 .addContainerGap(210, Short.MAX_VALUE))
+                        .addComponent(viewPharma)
+                        .addGap(43, 43, 43)
+                        .addComponent(loadInventory)))
+                .addGap(25, 25, 25)
+                .addComponent(loadInventory1)
+                .addContainerGap(176, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -158,6 +188,22 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.first(layoutContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
+    private void loadInventoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadInventoryActionPerformed
+        // TODO add your handling code here:
+        LoadPharmaJPanel vpjp = new LoadPharmaJPanel(layoutContainer);
+        layoutContainer.add("LoadPharmaJPanel", vpjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_loadInventoryActionPerformed
+
+    private void loadInventory1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadInventory1ActionPerformed
+        // TODO add your handling code here:
+        ViewPharmaIJPanel vpjp = new ViewPharmaIJPanel(layoutContainer);
+        layoutContainer.add("ViewPharmaIJPanel", vpjp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_loadInventory1ActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -166,6 +212,8 @@ public class ManagePharmaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton loadInventory;
+    private javax.swing.JButton loadInventory1;
     private javax.swing.JButton viewPharma;
     // End of variables declaration//GEN-END:variables
 }

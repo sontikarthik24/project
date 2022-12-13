@@ -227,6 +227,8 @@ public class DoctorTaskJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) layoutContainer.getLayout();
         layout.next(layoutContainer);
         addDoctorTasks();
+        DefaultTableModel model = (DefaultTableModel) doctorTask.getModel();
+        model.removeRow(rowIndex);
     }//GEN-LAST:event_addNotesActionPerformed
 
     private void viewPatientHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientHistoryActionPerformed
