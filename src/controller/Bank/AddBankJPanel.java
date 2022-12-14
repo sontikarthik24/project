@@ -291,7 +291,7 @@ public class AddBankJPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Enter valid 10 digit Phone number");
                 saveFlag = false;
             }
-            else if(emaill.isEmpty() || emaill.matches("^[\\\\\\\\w!#$%&'+/=?`{|}~^-]+(?:\\\\\\\\.[\\\\\\\\w!#$%&'+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\\\\\\\.)+[a-zA-Z]{2,6}$") == false)
+            else if(emaill.isEmpty() || emaill.matches("^(.+)@(.+)$") == false)
             {
                 JOptionPane.showMessageDialog(this, "Enter valid person email");
                 saveFlag = false;

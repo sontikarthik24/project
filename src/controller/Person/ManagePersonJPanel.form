@@ -28,7 +28,7 @@
                   <Component id="manageUser" alignment="0" pref="177" max="32767" attributes="0"/>
                   <Component id="addAdhar" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="viewBankApplications" alignment="1" min="-2" pref="175" max="-2" attributes="0"/>
                   <Component id="addBank" alignment="1" min="-2" max="-2" attributes="0"/>
