@@ -198,7 +198,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         String doctorNamee = doctorName.getText();
         if(saveFlag == true)
         {
-            if(doctorName.getText().isEmpty() || doctorName.getText().matches("[A-Z a-z]*\\s*?") == false)
+            if(doctorName.getText().isEmpty() || doctorName.getText().matches("^[A-Za-z]{1,}[\\\\s]{0,1}[A-Za-z]{0,}$") == false)
             {
                 JOptionPane.showMessageDialog(this, "Enter a valid name");
                 saveFlag = false;

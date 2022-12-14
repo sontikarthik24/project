@@ -187,11 +187,11 @@ public class AddPharmaJPanel extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-         boolean saveFlag = true;
+        boolean saveFlag = true;
         String pharmaNamee = pharmaName.getText();
         if(saveFlag == true)
         {
-            if(pharmaNamee.isEmpty() || pharmaNamee.matches("[A-Z a-z]*\\s*?") == false)
+            if(pharmaNamee.isEmpty() || pharmaNamee.matches("^[A-Za-z]{1,}[\\\\s]{0,1}[A-Za-z]{0,}$") == false)
             {
                 JOptionPane.showMessageDialog(this, "Enter a valid pharmacy name");
                 saveFlag = false;
