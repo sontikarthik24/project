@@ -9,4 +9,4 @@ This application is a platform for people to find medical, identity, banking  re
 ![](src/view/Images/1.jpeg)
 
 ## *SEQUENCE DIAGRAM*
-![](src/view/Images/1.jpeg)
+![](src/view/Images/3.jpeg)
