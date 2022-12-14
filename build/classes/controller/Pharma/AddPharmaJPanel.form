@@ -39,19 +39,15 @@
                                   <Component id="hospitalName" alignment="1" min="-2" pref="147" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel9" min="-2" pref="246" max="-2" attributes="0"/>
-                              <EmptySpace min="92" pref="92" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel9" alignment="0" min="-2" pref="246" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="319" max="-2" attributes="0"/>
                       <Component id="saveButton" min="-2" pref="62" max="-2" attributes="0"/>
-                      <EmptySpace pref="149" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="216" max="-2" attributes="0"/>
+              <EmptySpace pref="62" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -92,7 +88,7 @@
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="saveButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="215" max="32767" attributes="0"/>
+              <EmptySpace pref="210" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

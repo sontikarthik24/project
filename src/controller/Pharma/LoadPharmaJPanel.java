@@ -231,10 +231,22 @@ public class LoadPharmaJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) drugs.getModel();
-        model.addRow(new Object[]{name.getText(), qty.getText()});
-        name.setText("");
-        qty.setText("");
+        boolean saveFlag = true;
+        if(saveFlag == true)
+        {
+            if(qty.getText().isEmpty() || qty.getText().matches("^[0-9]{2}$") == false)
+            {
+                JOptionPane.showMessageDialog(this, "Enter a valid 2 digit quantity");
+                saveFlag = false;
+            }
+        }
+        if(saveFlag == true)
+        {
+            DefaultTableModel model = (DefaultTableModel) drugs.getModel();
+            model.addRow(new Object[]{name.getText(), qty.getText()});
+            name.setText("");
+            qty.setText("");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
