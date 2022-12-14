@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -90,6 +91,7 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
@@ -137,6 +139,15 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Search");
 
+        jButton2.setBackground(new java.awt.Color(255, 204, 51));
+        jButton2.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,6 +170,10 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1)))
                         .addGap(25, 25, 25))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(218, 218, 218)
+                .addComponent(jButton2)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +193,9 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(219, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(jButton2)
+                .addContainerGap(159, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,10 +225,36 @@ public class ViewDoctorJPanel extends javax.swing.JPanel {
         layout.first(layoutContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int rowIndex = doctorData.getSelectedRow();
+        if (rowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row for deletion", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Database db = new Database();
+        
+        try {
+            Connection conn = db.connect();
+            String sql = "delete from doctordata where id=? and doctor=? and hospitalname=?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, Integer.valueOf(doctorData.getValueAt(rowIndex,0).toString()));
+            statement.setString(2, doctorData.getValueAt(rowIndex,1).toString());
+            statement.setString(2, doctorData.getValueAt(rowIndex,2).toString());
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Doctor Deleted", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            Logger.getLogger(ViewDoctorJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addDoctorData();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
     private javax.swing.JTable doctorData;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane2;

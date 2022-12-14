@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -62,8 +63,8 @@ public class ManagePoliceJPanel extends javax.swing.JPanel {
         for(Person p: policeList()){
             Object[] row = new Object[7];
             
-            row[0] = p.getName();
-            row[1] = p.getUserName();
+            row[0] = p.getUserName();
+            row[1] = p.getName();
             row[2] = p.getDob();
             row[3] = p.getGender();
             row[4] = p.getPhone();
@@ -90,6 +91,7 @@ public class ManagePoliceJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        delete = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
@@ -110,7 +112,7 @@ public class ManagePoliceJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Username", "DOB", "Gender", "Phone", "Email", "Address"
+                "Username", "Name", "DOB", "Gender", "Phone", "Email", "Address"
             }
         ));
         jScrollPane1.setViewportView(policeData);
@@ -141,6 +143,15 @@ public class ManagePoliceJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Search");
 
+        delete.setBackground(new java.awt.Color(255, 204, 51));
+        delete.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
+        delete.setText("Delete");
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,14 +166,16 @@ public class ManagePoliceJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(91, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(55, 55, 55))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(delete)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(214, 214, 214))
         );
         layout.setVerticalGroup(
@@ -183,7 +196,9 @@ public class ManagePoliceJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addComponent(delete)
+                .addContainerGap(152, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -213,9 +228,34 @@ public class ManagePoliceJPanel extends javax.swing.JPanel {
         tr.setRowFilter(RowFilter.regexFilter(jTextField2.getText().trim()));
     }//GEN-LAST:event_jTextField2KeyPressed
 
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+        int rowIndex = policeData.getSelectedRow();
+        if (rowIndex<0){
+            JOptionPane.showMessageDialog(this, "Please select a row for deletion", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Database db = new Database();
+        
+        try {
+            Connection conn = db.connect();
+            String sql = "delete from userdata where role=? and username=?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, "police");
+            statement.setString(2, policeData.getValueAt(rowIndex,1).toString());
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Police Deleted", "Info", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            Logger.getLogger(ManagePoliceJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        addPoliceData();
+    }//GEN-LAST:event_deleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton delete;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;

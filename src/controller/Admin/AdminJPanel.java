@@ -10,6 +10,7 @@ import controller.Organisation.ManageOrganisationJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import view.Login.LoginJPanel;
+import view.Register.RegisterAdminJPanel;
 
 /**
  *
@@ -37,9 +38,10 @@ public class AdminJPanel extends javax.swing.JPanel {
         manageNetworks = new javax.swing.JButton();
         manageEnterprises = new javax.swing.JButton();
         manageOrganisations = new javax.swing.JButton();
-        backButton = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JButton();
+        manageAdmins = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 102, 102));
 
@@ -70,13 +72,6 @@ public class AdminJPanel extends javax.swing.JPanel {
             }
         });
 
-        backButton.setText("<<BACK");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-
         jButton1.setBackground(new java.awt.Color(255, 204, 51));
         jButton1.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         jButton1.setText("Logout");
@@ -89,23 +84,43 @@ public class AdminJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/Images/addd.png"))); // NOI18N
 
+        BackButton.setBackground(new java.awt.Color(255, 204, 51));
+        BackButton.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
+        BackButton.setText("<<BACK");
+        BackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackButtonActionPerformed(evt);
+            }
+        });
+
+        manageAdmins.setBackground(new java.awt.Color(255, 204, 51));
+        manageAdmins.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
+        manageAdmins.setText("Manage Admin's");
+        manageAdmins.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageAdminsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(BackButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(jLabel1)
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(manageOrganisations)
-                            .addComponent(manageEnterprises, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(manageNetworks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(backButton)))
+                            .addComponent(manageAdmins, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(manageOrganisations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(manageEnterprises, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(manageNetworks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -115,11 +130,11 @@ public class AdminJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(backButton)
-                            .addComponent(jButton1))
-                        .addGap(71, 71, 71)
+                            .addComponent(jButton1)
+                            .addComponent(BackButton))
+                        .addGap(72, 72, 72)
                         .addComponent(manageEnterprises)
                         .addGap(39, 39, 39)
                         .addComponent(manageNetworks)
@@ -128,7 +143,9 @@ public class AdminJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(143, 143, 143)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(manageAdmins)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -156,13 +173,6 @@ public class AdminJPanel extends javax.swing.JPanel {
         layout.next(layoutContainer);
     }//GEN-LAST:event_manageOrganisationsActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        layoutContainer.remove(this);
-        CardLayout layout = (CardLayout) layoutContainer.getLayout();
-        layout.previous(layoutContainer);
-    }//GEN-LAST:event_backButtonActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         layoutContainer.remove(this);
@@ -170,11 +180,27 @@ public class AdminJPanel extends javax.swing.JPanel {
         layout.first(layoutContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+        // TODO add your handling code here:
+        layoutContainer.remove(this);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.previous(layoutContainer);
+    }//GEN-LAST:event_BackButtonActionPerformed
+
+    private void manageAdminsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageAdminsActionPerformed
+        // TODO add your handling code here:
+        RegisterAdminJPanel mojp = new RegisterAdminJPanel(layoutContainer);
+        layoutContainer.add("RegisterAdminJPanel", mojp);
+        CardLayout layout = (CardLayout) layoutContainer.getLayout();
+        layout.next(layoutContainer);
+    }//GEN-LAST:event_manageAdminsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
+    private javax.swing.JButton BackButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton manageAdmins;
     private javax.swing.JButton manageEnterprises;
     private javax.swing.JButton manageNetworks;
     private javax.swing.JButton manageOrganisations;
