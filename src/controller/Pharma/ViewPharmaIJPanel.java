@@ -86,7 +86,7 @@ public class ViewPharmaIJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 40, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("MV Boli", 1, 14)); // NOI18N
         jLabel1.setText("Select pharma");
